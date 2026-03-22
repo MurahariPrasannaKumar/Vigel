@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "server:dev": "tsx watch backend/index.ts",
-    "dev:full": "concurrently -n next,auth -c blue,green \"npm run dev\" \"npm run server:dev\"",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
+  "dev": "next dev",
+
+  "server:dev": "tsx backend/index.ts",
+  "server:start": "tsx backend/index.ts",
+
+  "dev:full": "concurrently -n next,auth -c blue,green \"npm run dev\" \"npm run server:dev\"",
+
+  "build": "next build",
+  "start": "next start",
+
+  "lint": "eslint"
+},
   "dependencies": {
     "concurrently": "^9.2.1",
     "cors": "^2.8.5",

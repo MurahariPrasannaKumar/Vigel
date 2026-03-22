@@ -112,12 +112,18 @@ try {
 const app = express();
 app.use(
   cors({
-    origin: CLIENT_ORIGIN,
+    origin: [
+      "http://localhost:3000",
+      "https://vigel.vercel.app",
+      "https://vigel-git-main-murahariprasannakumars-projects.vercel.app",
+      "https://vigel-brk1npxcl-murahariprasannakumars-projects.vercel.app",
+    ],
     credentials: true,
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  }),
+  })
 );
+app.options("*", cors());
 app.use(express.json({ limit: "32kb" }));
 
 app.get("/health", (_req, res) => {
