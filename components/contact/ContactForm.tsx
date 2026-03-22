@@ -37,26 +37,46 @@ export function ContactForm() {
     setStatus("idle");
     setErrorMsg(null);
     if (data.company) {
+      // Honeypot field
       setStatus("ok");
       reset();
       return;
     }
-    const { db, ready } = getClientFirebase();
-    if (!ready || !db) {
-      setErrorMsg(
-        "Firebase is not configured. Add NEXT_PUBLIC_FIREBASE_* keys to .env.local.",
-      );
-      setStatus("err");
-      return;
-    }
+
     try {
-      await addDoc(collection(db, "leads"), {
-        name: data.name,
-        email: data.email,
-        phone: data.phone,
-        message: data.message,
-        createdAt: serverTimestamp(),
+      // 1) Send email via Express Backend
+      const authApiUrl = process.env.NEXT_PUBLIC_AUTH_API_URL?.replace(/\/$/, "");
+      const res = await fetch(`${authApiUrl}/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+        }),
       });
+
+      if (!res.ok) {
+        throw new Error("Failed to send email via backend.");
+      }
+
+      // 2) Bonus: Dual System - save to Firestore if configured
+      const { db, ready } = getClientFirebase();
+      if (ready && db) {
+        try {
+          await addDoc(collection(db, "leads"), {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            message: data.message,
+            createdAt: serverTimestamp(),
+          });
+        } catch (dbError) {
+          console.error("Firebase save failed, but email was sent:", dbError);
+        }
+      }
+
       setStatus("ok");
       reset();
     } catch (e) {

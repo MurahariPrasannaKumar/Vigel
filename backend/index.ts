@@ -126,9 +126,13 @@ app.use(
 app.options("*", cors());
 app.use(express.json({ limit: "32kb" }));
 
+import contactRouter from "./routes/contact";
+
 app.get("/health", (_req, res) => {
   res.json({ ok: true });
 });
+
+app.use("/contact", contactRouter);
 
 /** Exchange Firebase ID token for app JWT pair */
 app.post("/auth/login", async (req, res) => {
