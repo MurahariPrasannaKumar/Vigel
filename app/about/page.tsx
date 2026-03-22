@@ -8,9 +8,24 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="flex flex-1 flex-col bg-zinc-50 text-zinc-900 dark:bg-vigel-dark dark:text-zinc-100">
-      <section className="relative overflow-hidden px-4 py-28 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute inset-0 hero-radial opacity-90 dark:opacity-100" />
-        <div className="relative mx-auto max-w-6xl">
+      {/* 🔥 HERO SECTION WITH FULL-WIDTH VIDEO */}
+      <section className="relative isolate min-h-[100svh] overflow-hidden border-b border-zinc-200/80">
+        {/* 🎥 Background Video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 z-[-1] h-full w-full object-cover"
+        >
+          <source src="/about-video.mp4" type="video/mp4" />
+        </video>
+
+        {/* 🌑 Gradient Overlay */}
+        <div className="absolute inset-0 z-[-1] bg-gradient-to-b from-black/60 via-black/30 to-black/40" />
+
+        {/* ✨ Content */}
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-24 pt-28 sm:px-8 text-white">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vigel-accent">
             Vision
           </p>
