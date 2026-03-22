@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# Firebase Admin SDK key (never commit)
+firebase-service-account.json
+*-firebase-adminsdk-*.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*

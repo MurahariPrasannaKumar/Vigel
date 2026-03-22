@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Note: serverTimestamp() is not visible as a timestamp during rule evaluation.
+    function validLead(data) {
+      return data.keys().hasAll(['name', 'email', 'phone', 'message'])
+        && data.name is string && data.name.size() > 1
+        && data.email is string && data.email.size() > 3
+        && data.phone is string && data.phone.size() > 5
+        && data.message is string && data.message.size() > 5;
+    }
+
+    // For /admin inbox: use Firebase Auth custom claims (admin==true) and add:
+    // allow read: if request.auth != null && request.auth.token.admin == true;
+    match /leads/{id} {
+      allow create: if validLead(request.resource.data);
+      allow read, update, delete: if false;
+    }
+  }
+}
