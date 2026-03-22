@@ -112,12 +112,7 @@ export function AnimatedNavbar() {
             {user ? "Dashboard" : "Sign in"}
           </MotionLink>
 
-          <PrimaryCTA
-            href="/contact"
-            className="px-5 py-2.5 text-sm shadow-[0_10px_36px_-10px_rgba(22,163,74,0.4)]"
-          >
-            Get a quote
-          </PrimaryCTA>
+          
         </div>
       </div>
     </motion.header>
