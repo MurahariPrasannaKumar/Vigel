@@ -84,22 +84,22 @@ export const AnimatedStats = memo(function AnimatedStats() {
           <div className="relative h-full w-full transition-all duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
             
             {/* Front Face */}
-            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border border-zinc-200 bg-white p-6 text-center shadow-sm [backface-visibility:hidden]">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-50 border border-zinc-100 shadow-inner transition-colors duration-500 group-hover:bg-emerald-50">
-                <s.icon className="h-7 w-7 text-emerald-600" strokeWidth={1.5} />
+            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border border-white/10 bg-zinc-900/40 p-6 text-center shadow-xl backdrop-blur-md [backface-visibility:hidden]">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/5 border border-white/10 shadow-inner transition-colors duration-500 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30">
+                <s.icon className="h-7 w-7 text-emerald-400" strokeWidth={1.5} />
               </div>
-              <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-900 px-4">
+              <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-100 px-4">
                 {s.label}
               </h3>
             </div>
 
             {/* Back Face */}
-            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 p-6 text-center shadow-md [backface-visibility:hidden] [transform:rotateY(180deg)]">
-              <p className="font-[family-name:var(--font-syne)] text-4xl font-semibold text-emerald-900 sm:text-5xl">
+            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center rounded-2xl border border-emerald-500/30 bg-zinc-900/60 p-6 text-center shadow-2xl backdrop-blur-md [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <p className="font-[family-name:var(--font-syne)] text-4xl font-semibold text-emerald-400 sm:text-5xl">
                 <Counter value={s.value} suffix={s.suffix} />
               </p>
-              <div className="mt-4 h-px w-12 bg-emerald-200/60" />
-              <p className="mt-4 text-sm leading-relaxed text-emerald-800/80">
+              <div className="mt-4 h-px w-12 bg-emerald-500/30" />
+              <p className="mt-4 text-sm leading-relaxed text-emerald-100/70">
                 {s.desc}
               </p>
             </div>

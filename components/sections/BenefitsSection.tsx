@@ -85,10 +85,10 @@ export function BenefitsSection() {
   return (
     <section
       ref={rootRef}
-      className="relative w-full overflow-hidden bg-transparent py-24 sm:py-32"
+      className="relative w-full overflow-hidden bg-white py-24 sm:py-32"
     >
       {/* SaaS-style Background Elements */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-20">
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-30">
         <div className="h-[40rem] w-[40rem] rounded-full bg-vigel-accent/30 blur-[120px]" />
       </div>
 
@@ -104,18 +104,18 @@ export function BenefitsSection() {
               </p>
             </div>
 
-            <h2 className="mt-6 text-4xl font-medium tracking-tight sm:text-5xl font-[family-name:var(--font-syne)] text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-400">
+            <h2 className="mt-6 text-4xl font-medium tracking-tight sm:text-5xl font-[family-name:var(--font-syne)] text-zinc-900">
               Solar that feels inevitable — engineered, cinematic, alive.
             </h2>
 
-            <p className="mt-6 text-lg leading-8 text-zinc-400">
+            <p className="mt-6 text-lg leading-8 text-zinc-600">
               We design energy systems the way premium products are crafted:
               obsessive detail, transparent data, and a calm, confident
               experience from first call to flip-the-switch.
             </p>
 
             <div className="mt-8 flex gap-4">
-              <button className="rounded-full bg-white px-6 py-2.5 text-sm font-semibold text-zinc-950 shadow-sm hover:bg-zinc-200 transition-colors">
+              <button className="rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-105 transition-all">
                 Explore Tech
               </button>
             </div>
@@ -126,23 +126,23 @@ export function BenefitsSection() {
             {benefits.map((b, index) => (
               <div
                 key={b.title}
-                className="benefit-card group relative overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-md transition-all duration-300 hover:border-white/20 hover:bg-white/[0.05]"
+                className="benefit-card group relative overflow-hidden rounded-3xl border border-black/5 bg-zinc-50 p-8 shadow-sm transition-all duration-300 hover:border-black/10 hover:shadow-md"
               >
                 {/* Decorative Line */}
-                <div className="benefit-line absolute left-0 top-0 h-px w-full origin-left bg-gradient-to-r from-vigel-accent/50 via-white/20 to-transparent" />
+                <div className="benefit-line absolute left-0 top-0 h-px w-full origin-left bg-gradient-to-r from-vigel-green/50 via-zinc-200 to-transparent" />
 
                 <div className="flex items-start gap-6">
                   {/* Icon Container */}
-                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-white/10 bg-white/5 shadow-inner transition-transform duration-300 group-hover:scale-110">
-                    <b.icon className="h-6 w-6 text-vigel-accent" strokeWidth={1.5} />
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm transition-transform duration-300 group-hover:scale-110">
+                    <b.icon className="h-6 w-6 text-vigel-green" strokeWidth={1.5} />
                   </div>
 
                   {/* Content */}
                   <div>
-                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-white group-hover:text-vigel-accent/80 transition-colors">
+                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-900 group-hover:text-vigel-green transition-colors">
                       {b.title}
                     </h3>
-                    <p className="mt-3 leading-relaxed text-zinc-400">
+                    <p className="mt-3 leading-relaxed text-zinc-600">
                       {b.body}
                     </p>
                   </div>
