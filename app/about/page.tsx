@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 text-zinc-900 dark:bg-vigel-dark dark:text-zinc-100">
+    <main className="flex flex-1 flex-col bg-white">
       {/* 🔥 HERO SECTION WITH FULL-WIDTH VIDEO */}
       <section className="relative isolate min-h-[100svh] overflow-hidden border-b border-zinc-200/80">
         {/* 🎥 Background Video */}
@@ -41,29 +41,29 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 py-20 sm:px-6 lg:px-8">
+      <section className="px-4 py-20 sm:px-6 lg:px-8 bg-zinc-50 border-t border-zinc-200">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
-          <div className="rounded-2xl border border-zinc-200/80 bg-white/80 p-8 backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-            <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
+            <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900">
               Company story
             </h2>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600">
               Born from a team of engineers and operators frustrated by opaque installers,
               VIGEL pairs field discipline with digital storytelling. We built our own
               delivery playbook — design automation, partner-vetted crews, and monitoring
               that turns raw telemetry into decisions you can trust.
             </p>
-            <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+            <p className="mt-4 text-sm leading-relaxed text-zinc-600">
               Today we deploy across residential, commercial, and utility programs, with a
               single promise: measurable production, human support, and an aesthetic that
               matches the ambition of clean energy itself.
             </p>
           </div>
-          <div className="flex flex-col justify-center rounded-2xl border border-zinc-200/80 bg-gradient-to-br from-vigel-green/15 via-white/60 to-vigel-yellow/10 p-8 dark:border-white/10 dark:from-vigel-green/20 dark:via-white/5 dark:to-vigel-yellow/10">
-            <blockquote className="font-[family-name:var(--font-syne)] text-xl font-medium leading-snug text-zinc-900 dark:text-white">
+          <div className="flex flex-col justify-center rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-8 shadow-sm">
+            <blockquote className="font-[family-name:var(--font-syne)] text-xl font-medium leading-snug text-zinc-900">
               &ldquo;We don&apos;t sell panels — we ship confidence in every kilowatt-hour.&rdquo;
             </blockquote>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-vigel-green dark:text-vigel-accent">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
               VIGEL founding principle
             </p>
           </div>

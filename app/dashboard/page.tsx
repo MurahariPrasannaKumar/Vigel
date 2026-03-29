@@ -41,7 +41,7 @@ export default function DashboardPage() {
   const admin = isAdminEmail(user?.email ?? me?.email);
 
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 dark:bg-vigel-dark">
+    <main className="flex flex-1 flex-col bg-transparent text-white">
       <section className="border-b border-zinc-200/80 bg-white/70 px-4 py-16 backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] sm:px-6 sm:py-20 lg:px-8">
         <div className="mx-auto max-w-6xl">
           <motion.div

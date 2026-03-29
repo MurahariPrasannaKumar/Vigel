@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 dark:bg-vigel-dark">
+    <main className="flex flex-1 flex-col bg-transparent text-white">
       <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-8">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(34,197,94,0.18),transparent_50%)]" />
         <div className="relative mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">

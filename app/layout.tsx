@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import { AppProviders } from "@/components/providers/AppProviders";
 import { SiteShell } from "@/components/layout/SiteShell";
+import { CursorGrid } from "@/components/ui/CursorGrid";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import CustomCursor from "@/components/ui/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -59,6 +62,9 @@ export default function RootLayout({
     >
       <body className="min-h-full font-sans">
         <AppProviders>
+          <CursorGrid />
+          <CustomCursor />
+          <WhatsAppButton />
           <SiteShell>{children}</SiteShell>
         </AppProviders>
       </body>

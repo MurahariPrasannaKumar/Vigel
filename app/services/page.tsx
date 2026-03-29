@@ -41,7 +41,7 @@ const blocks = [
 
 export default function ServicesPage() {
   return (
-    <main className="flex flex-1 flex-col bg-zinc-50 text-zinc-900 dark:bg-vigel-dark dark:text-zinc-100">
+    <main className="flex flex-1 flex-col bg-white">
 
       {/* 🔥 HERO SECTION WITH FULL-WIDTH VIDEO */}
       <section className="relative isolate min-h-[100svh] overflow-hidden border-b border-zinc-200/80">
@@ -79,27 +79,27 @@ export default function ServicesPage() {
       </section>
 
       {/* 🔥 SERVICES SECTION */}
-      <section className="space-y-16 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="space-y-16 px-4 py-20 sm:px-6 lg:px-8 bg-zinc-50">
         <div className="mx-auto max-w-6xl space-y-16">
           {blocks.map((b) => (
             <article
               key={b.id}
               id={b.id}
-              className="grid gap-10 rounded-2xl border border-zinc-200/80 bg-white/70 p-8 backdrop-blur-xl dark:border-white/10 dark:bg-white/5 lg:grid-cols-2 lg:p-10"
+              className="grid gap-10 rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-10"
             >
               <div>
-                <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold sm:text-3xl">
+                <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900 sm:text-3xl">
                   {b.title}
                 </h2>
-                <p className="mt-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400 sm:text-base">
+                <p className="mt-4 text-sm leading-relaxed text-zinc-600 sm:text-base">
                   {b.body}
                 </p>
               </div>
 
-              <ul className="space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+              <ul className="space-y-3 text-sm text-zinc-700">
                 {b.bullets.map((item) => (
                   <li key={item} className="flex gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-vigel-accent" />
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-vigel-green" />
                     {item}
                   </li>
                 ))}

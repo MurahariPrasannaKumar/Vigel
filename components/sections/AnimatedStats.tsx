@@ -3,6 +3,7 @@
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { memo, useEffect, useRef } from "react";
 import { EASE } from "@/lib/motion";
+import { Zap, Home, Leaf, Star } from "lucide-react";
 
 const Counter = memo(function Counter({
   value,
@@ -33,10 +34,34 @@ const Counter = memo(function Counter({
 });
 
 const stats = [
-  { label: "Megawatts deployed", value: 420, suffix: "+" },
-  { label: "Homes powered", value: 12800, suffix: "+" },
-  { label: "CO₂ offset (tons / yr)", value: 96000, suffix: "" },
-  { label: "Client satisfaction", value: 99, suffix: "%" },
+  { 
+    label: "Megawatts deployed", 
+    value: 420, 
+    suffix: "+", 
+    icon: Zap, 
+    desc: "Utility-scale generation capacity installed and active." 
+  },
+  { 
+    label: "Homes powered", 
+    value: 12800, 
+    suffix: "+", 
+    icon: Home, 
+    desc: "Clean energy delivered to residential communities." 
+  },
+  { 
+    label: "CO₂ offset (tons / yr)", 
+    value: 96000, 
+    suffix: "", 
+    icon: Leaf, 
+    desc: "Carbon emission reduction driving global impact." 
+  },
+  { 
+    label: "Client satisfaction", 
+    value: 99, 
+    suffix: "%", 
+    icon: Star, 
+    desc: "Five-star premium experience from design to flip-the-switch." 
+  },
 ];
 
 export const AnimatedStats = memo(function AnimatedStats() {
@@ -45,21 +70,41 @@ export const AnimatedStats = memo(function AnimatedStats() {
       {stats.map((s, i) => (
         <motion.div
           key={s.label}
-          initial={{ opacity: 0, y: 24, scale: 0.98 }}
-          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{
-            delay: i * 0.1,
-            duration: 0.58,
+            delay: i * 0.15,
+            duration: 0.6,
             ease: EASE,
           }}
-          whileHover={{ y: -3, transition: { duration: 0.35, ease: EASE } }}
-          className="glass-panel-light rounded-2xl p-6 shadow-lg transition-shadow duration-300 hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-black/50"
+          className="group relative h-[250px] w-full cursor-pointer [perspective:1200px]"
         >
-          <p className="font-[family-name:var(--font-syne)] text-3xl font-semibold text-zinc-900 dark:text-white sm:text-4xl">
-            <Counter value={s.value} suffix={s.suffix} />
-          </p>
-          <p className="mt-2 text-body-sm">{s.label}</p>
+          {/* Inner 3D Container */}
+          <div className="relative h-full w-full transition-all duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+            
+            {/* Front Face */}
+            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border border-zinc-200 bg-white p-6 text-center shadow-sm [backface-visibility:hidden]">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-zinc-50 border border-zinc-100 shadow-inner transition-colors duration-500 group-hover:bg-emerald-50">
+                <s.icon className="h-7 w-7 text-emerald-600" strokeWidth={1.5} />
+              </div>
+              <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-900 px-4">
+                {s.label}
+              </h3>
+            </div>
+
+            {/* Back Face */}
+            <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center rounded-2xl border border-emerald-100 bg-emerald-50 p-6 text-center shadow-md [backface-visibility:hidden] [transform:rotateY(180deg)]">
+              <p className="font-[family-name:var(--font-syne)] text-4xl font-semibold text-emerald-900 sm:text-5xl">
+                <Counter value={s.value} suffix={s.suffix} />
+              </p>
+              <div className="mt-4 h-px w-12 bg-emerald-200/60" />
+              <p className="mt-4 text-sm leading-relaxed text-emerald-800/80">
+                {s.desc}
+              </p>
+            </div>
+
+          </div>
         </motion.div>
       ))}
     </div>

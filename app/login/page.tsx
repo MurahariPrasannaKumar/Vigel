@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 dark:bg-[#08140c]">
+    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-transparent px-4 py-24 text-white">
 
       {/* 🔥 Ambient Glow (Neutral) */}
       <div className="pointer-events-none absolute top-0 -translate-y-12 translate-x-1/4 opacity-40">

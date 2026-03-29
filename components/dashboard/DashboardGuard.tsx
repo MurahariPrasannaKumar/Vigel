@@ -10,7 +10,7 @@ import { getClientFirebase } from "@/lib/firebase";
 
 function Spinner({ label }: { label: string }) {
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 bg-zinc-50 px-6 dark:bg-vigel-dark">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 bg-transparent px-6 text-white">
       <div className="h-10 w-10 animate-spin rounded-full border-2 border-vigel-accent border-t-transparent" />
       <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
     </div>
@@ -69,7 +69,7 @@ export function DashboardGuard({ children }: { children: React.ReactNode }) {
 
   if (jwtExchangeError) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 bg-zinc-50 px-6 dark:bg-vigel-dark">
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 bg-transparent px-6 text-white">
         <div className="max-w-md rounded-2xl border border-red-500/25 bg-red-500/10 px-6 py-5 text-center text-sm text-red-200">
           <p className="font-medium text-white">Cannot open dashboard</p>
           <p className="mt-2 text-red-200/90">{jwtExchangeError}</p>

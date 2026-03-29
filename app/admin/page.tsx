@@ -2,7 +2,7 @@ import { LeadsTable } from "@/components/admin/LeadsTable";
 
 export default function AdminPage() {
   return (
-    <div className="min-h-[60vh] bg-vigel-dark text-zinc-100">
+    <div className="min-h-[60vh] bg-transparent text-zinc-100">
       <div className="border-b border-white/10 px-6 py-8">
         <h1 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-white">
           Lead inbox

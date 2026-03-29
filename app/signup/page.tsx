@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SignupPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 dark:bg-[#08140c]">
+    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-transparent px-4 py-24 text-white">
 
       {/* 🔥 Ambient Glow (Premium subtle effect) */}
       <div className="pointer-events-none absolute top-[-80px] left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-zinc-300/20 blur-[100px] dark:bg-white/10" />

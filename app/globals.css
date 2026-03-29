@@ -49,11 +49,11 @@ html.lenis body {
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-900 antialiased;
+  @apply bg-black text-white antialiased;
 }
 
 body.dark {
-  @apply bg-vigel-dark text-zinc-100;
+  @apply bg-black text-white;
 }
 
 ::selection {
@@ -140,13 +140,16 @@ body.dark {
 }
 
 .section-light {
-  @apply bg-zinc-50 text-zinc-900;
+  @apply bg-transparent text-white;
 }
 
 .section-dark {
-  @apply bg-vigel-dark text-zinc-100;
+  @apply bg-transparent text-white;
 }
 
-.section-shell {
-  @apply px-4 py-20 sm:px-6 sm:py-24 lg:px-8;
+/* Hide default cursor on devices with a mouse to let CustomCursor take over */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
 }

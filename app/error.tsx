@@ -15,7 +15,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-vigel-dark px-6 py-24 text-center text-zinc-200">
+    <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-transparent px-6 py-24 text-center text-zinc-200">
       <h1 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-white">
         Something went wrong
       </h1>

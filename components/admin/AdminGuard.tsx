@@ -33,7 +33,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   if (loading || !firebaseReady) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-vigel-dark text-zinc-400">
+      <div className="flex min-h-screen items-center justify-center bg-transparent text-zinc-400">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-vigel-accent border-t-transparent" />
       </div>
     );
@@ -41,7 +41,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   if (!user || !isAdminEmail(user.email)) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-vigel-dark text-zinc-300">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-transparent text-zinc-300">
         <p>Checking access…</p>
         <Link href="/login" className="text-vigel-accent underline">
           Sign in
@@ -52,7 +52,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   if (jwtExchangeError) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-vigel-dark px-6 text-center text-zinc-300">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-6 bg-transparent px-6 text-center text-zinc-300">
         <div className="max-w-md rounded-xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm text-red-200">
           <p className="font-medium text-white">JWT session unavailable</p>
           <p className="mt-2 text-red-200/90">{jwtExchangeError}</p>
@@ -79,7 +79,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   if (!jwtReady) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-vigel-dark text-zinc-400">
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3 bg-transparent text-zinc-400">
         <div className="h-10 w-10 animate-spin rounded-full border-2 border-vigel-accent border-t-transparent" />
         <p className="text-sm text-zinc-500">Establishing secure JWT session…</p>
       </div>
@@ -88,7 +88,7 @@ export function AdminGuard({ children }: { children: React.ReactNode }) {
 
   return (
     <div>
-      <div className="flex items-center justify-between border-b border-white/10 bg-vigel-dark px-6 py-4">
+      <div className="flex items-center justify-between border-b border-white/10 bg-transparent px-6 py-4">
         <span className="text-sm font-medium text-white">VIGEL Admin</span>
         <button
           type="button"
