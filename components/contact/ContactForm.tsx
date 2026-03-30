@@ -19,7 +19,7 @@ const schema = z.object({
 
 type FormValues = z.infer<typeof schema>;
 
-export function ContactSection() {
+export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
