@@ -13,13 +13,13 @@ const schema = z.object({
   name: z.string().min(2, "Please enter your name"),
   email: z.string().email("Enter a valid email"),
   phone: z.string().min(8, "Enter a valid phone number"),
-  message: z.string().min(10, "Tell us a bit more (10+ characters)"),
+  message: z.string().min(10, "Tell us a bit more"),
   company: z.string().max(0).optional(),
 });
 
 type FormValues = z.infer<typeof schema>;
 
-export function ContactForm() {
+export function ContactSection() {
   const [status, setStatus] = useState<"idle" | "ok" | "err">("idle");
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
@@ -30,150 +30,122 @@ export function ContactForm() {
     formState: { errors, isSubmitting },
   } = useForm<FormValues>({
     resolver: zodResolver(schema),
-    defaultValues: { name: "", email: "", phone: "", message: "", company: "" },
   });
 
   const onSubmit = async (data: FormValues) => {
     setStatus("idle");
     setErrorMsg(null);
-    if (data.company) {
-      // Honeypot field
-      setStatus("ok");
-      reset();
-      return;
-    }
 
     try {
-      // 1) Send email via Express Backend
       const authApiUrl = process.env.NEXT_PUBLIC_AUTH_API_URL?.replace(/\/$/, "");
-      const res = await fetch(`${authApiUrl}/contact`, {
+      await fetch(`${authApiUrl}/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          phone: data.phone,
-          message: data.message,
-        }),
+        body: JSON.stringify(data),
       });
 
-      if (!res.ok) {
-        throw new Error("Failed to send email via backend.");
-      }
-
-      // 2) Bonus: Dual System - save to Firestore if configured
       const { db, ready } = getClientFirebase();
       if (ready && db) {
-        try {
-          await addDoc(collection(db, "leads"), {
-            name: data.name,
-            email: data.email,
-            phone: data.phone,
-            message: data.message,
-            createdAt: serverTimestamp(),
-          });
-        } catch (dbError) {
-          console.error("Firebase save failed, but email was sent:", dbError);
-        }
+        await addDoc(collection(db, "leads"), {
+          ...data,
+          createdAt: serverTimestamp(),
+        });
       }
 
       setStatus("ok");
       reset();
-    } catch (e) {
-      console.error(e);
+    } catch {
       setStatus("err");
-      setErrorMsg("Could not send right now. Please try again shortly.");
+      setErrorMsg("Something went wrong. Please try again.");
     }
   };
 
   const field =
-    "w-full rounded-xl border border-zinc-200/90 bg-white/80 px-4 py-3 text-sm text-zinc-900 outline-none transition placeholder:text-zinc-400 focus:border-vigel-accent focus:ring-2 focus:ring-vigel-accent/25 dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-zinc-500";
+    "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-2 focus:ring-black/5 transition";
 
   return (
-    <motion.form
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      onSubmit={handleSubmit(onSubmit)}
-      className="glass-panel-light space-y-5 rounded-2xl p-6 sm:p-8"
-    >
-      <input
-        type="text"
-        tabIndex={-1}
-        autoComplete="off"
-        className="hidden"
-        aria-hidden
-        {...register("company")}
-      />
+    <section className="bg-white py-20 px-6">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
 
-      <div>
-        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-          Name
-        </label>
-        <input className={cn(field, "mt-2")} {...register("name")} />
-        {errors.name && (
-          <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>
-        )}
-      </div>
-      <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Email
-          </label>
-          <input className={cn(field, "mt-2")} type="email" {...register("email")} />
-          {errors.email && (
-            <p className="mt-1 text-xs text-red-500">{errors.email.message}</p>
-          )}
-        </div>
-        <div>
-          <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-            Phone
-          </label>
-          <input className={cn(field, "mt-2")} type="tel" {...register("phone")} />
-          {errors.phone && (
-            <p className="mt-1 text-xs text-red-500">{errors.phone.message}</p>
-          )}
-        </div>
-      </div>
-      <div>
-        <label className="text-xs font-semibold uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
-          Project details
-        </label>
-        <textarea
-          rows={4}
-          className={cn(field, "mt-2 resize-y")}
-          {...register("message")}
-        />
-        {errors.message && (
-          <p className="mt-1 text-xs text-red-500">{errors.message.message}</p>
-        )}
-      </div>
+        {/* LEFT - FORM */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm"
+        >
+          <h2 className="text-3xl font-semibold text-gray-900">
+            Let’s talk about your project
+          </h2>
+          <p className="text-gray-500 mt-2 text-sm">
+            Fill the form and our team will get back within 24 hours.
+          </p>
 
-      {status === "ok" && (
-        <p className="rounded-xl border border-vigel-accent/30 bg-vigel-accent/10 px-4 py-3 text-sm text-vigel-green dark:text-vigel-accent">
-          Thank you — we&apos;ll reach out within one business day.
-        </p>
-      )}
-      {status === "err" && errorMsg && (
-        <p className="rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-600 dark:text-red-400">
-          {errorMsg}
-        </p>
-      )}
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-8">
+            <input type="text" className="hidden" {...register("company")} />
 
-      <motion.button
-        type="submit"
-        disabled={isSubmitting}
-        whileHover={
-          isSubmitting
-            ? undefined
-            : { scale: 1.01, boxShadow: "0 16px 48px -12px rgba(34, 197, 94, 0.4)" }
-        }
-        whileTap={isSubmitting ? undefined : { scale: 0.98 }}
-        transition={{ type: "spring", stiffness: 400, damping: 28 }}
-        className="w-full rounded-full bg-gradient-to-r from-vigel-green to-vigel-accent py-3.5 text-sm font-semibold text-white shadow-[0_12px_40px_-10px_rgba(22,163,74,0.35)] ring-1 ring-white/15 transition-[filter] hover:brightness-[1.03] disabled:opacity-60 disabled:hover:brightness-100"
-      >
-        {isSubmitting ? "Sending…" : "Submit inquiry"}
-      </motion.button>
-    </motion.form>
+            <div>
+              <label className="text-xs font-medium text-gray-500">Name</label>
+              <input className={cn(field, "mt-2")} {...register("name")} />
+              {errors.name && (
+                <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
+              )}
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="text-xs font-medium text-gray-500">Email</label>
+                <input className={cn(field, "mt-2")} {...register("email")} />
+              </div>
+              <div>
+                <label className="text-xs font-medium text-gray-500">Phone</label>
+                <input className={cn(field, "mt-2")} {...register("phone")} />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-xs font-medium text-gray-500">Message</label>
+              <textarea
+                rows={4}
+                className={cn(field, "mt-2 resize-none")}
+                {...register("message")}
+              />
+            </div>
+
+            {status === "ok" && (
+              <p className="text-green-600 text-sm">
+                ✅ Message sent successfully!
+              </p>
+            )}
+
+            {status === "err" && (
+              <p className="text-red-500 text-sm">{errorMsg}</p>
+            )}
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full bg-black text-white py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition"
+            >
+              {isSubmitting ? "Sending..." : "Send Message"}
+            </button>
+          </form>
+        </motion.div>
+
+        {/* RIGHT - MAP */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm h-[500px]"
+        >
+          <iframe
+            src="https://www.google.com/maps?q=Angondahalli,Bangalore&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            loading="lazy"
+          ></iframe>
+        </motion.div>
+      </div>
+    </section>
   );
 }
