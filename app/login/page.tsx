@@ -11,26 +11,20 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-transparent px-4 py-24 text-white">
-
-      {/* 🔥 Ambient Glow (Neutral) */}
-      <div className="pointer-events-none absolute top-0 -translate-y-12 translate-x-1/4 opacity-40">
-        <div className="h-[400px] w-[400px] rounded-full bg-zinc-400/20 blur-[80px] dark:bg-white/10" />
+    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 text-zinc-900">
+      <div className="pointer-events-none absolute top-0 -translate-y-12 translate-x-1/4 opacity-50">
+        <div className="h-[400px] w-[400px] rounded-full bg-zinc-200/70 blur-[80px]" />
       </div>
-      <div className="pointer-events-none absolute bottom-0 -translate-x-1/4 translate-y-1/3 opacity-40">
-        <div className="h-[500px] w-[500px] rounded-full bg-zinc-300/20 blur-[100px] dark:bg-white/5" />
+      <div className="pointer-events-none absolute bottom-0 -translate-x-1/4 translate-y-1/3 opacity-45">
+        <div className="h-[500px] w-[500px] rounded-full bg-emerald-100/70 blur-[100px]" />
       </div>
 
-      {/* 🔥 Login Card */}
       <div className="relative z-10 w-full max-w-md animate-in fade-in zoom-in-95 duration-500">
-
-        <div className="rounded-3xl border border-zinc-200/70 bg-white/80 p-8 shadow-2xl shadow-zinc-200/40 backdrop-blur-2xl dark:border-white/10 dark:bg-white/[0.04] dark:shadow-black/60">
-
-          {/* 🔐 Header */}
+        <div className="rounded-3xl border border-zinc-200 bg-white p-8 shadow-2xl shadow-zinc-200/70 backdrop-blur-2xl">
           <div className="flex flex-col items-center space-y-5 text-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 shadow-sm dark:border-white/10 dark:bg-white/10">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-zinc-200 bg-zinc-100 shadow-sm">
               <svg
-                className="h-5 w-5 text-zinc-700 dark:text-white"
+                className="h-5 w-5 text-zinc-700"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -40,22 +34,17 @@ export default function LoginPage() {
             </div>
 
             <div className="space-y-1.5">
-              <h1 className="font-[family-name:var(--font-syne)] text-2xl font-bold tracking-tight text-zinc-900 dark:text-white">
+              <h1 className="font-[family-name:var(--font-syne)] text-2xl font-bold tracking-tight text-zinc-900">
                 Welcome back
               </h1>
-              <p className="text-sm text-zinc-600 dark:text-zinc-400">
-                Sign in to your VIGEL account
-              </p>
+              <p className="text-sm text-zinc-600">Sign in to your VIGEL account</p>
             </div>
           </div>
 
-          {/* 🔽 Body */}
           <div className="mt-8 space-y-6">
-
-            {/* 🔥 Google Button */}
             <button
               type="button"
-              className="flex w-full items-center justify-center gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2 dark:border-white/10 dark:bg-white/[0.05] dark:text-white dark:hover:bg-white/[0.08]"
+              className="flex w-full items-center justify-center gap-3 rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm font-medium text-zinc-900 transition-all hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-zinc-400 focus:ring-offset-2"
             >
               <svg className="h-5 w-5" viewBox="0 0 24 24">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />
@@ -66,25 +55,21 @@ export default function LoginPage() {
               Sign in with Google
             </button>
 
-            {/* Divider */}
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-zinc-200 dark:border-white/10" />
+                <div className="w-full border-t border-zinc-200" />
               </div>
               <div className="relative flex justify-center text-xs">
-                <span className="bg-white px-4 text-zinc-500 dark:bg-[#08140c] dark:text-zinc-400">
-                  Or continue with email
-                </span>
+                <span className="bg-white px-4 text-zinc-500">Or continue with email</span>
               </div>
             </div>
 
-            {/* Form */}
             <Suspense
               fallback={
                 <div className="space-y-4">
-                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-200 dark:bg-white/10" />
-                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-200 dark:bg-white/10" />
-                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-300/40 dark:bg-white/10" />
+                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-200" />
+                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-200" />
+                  <div className="h-10 w-full animate-pulse rounded-xl bg-zinc-300/40" />
                 </div>
               }
             >
@@ -93,19 +78,15 @@ export default function LoginPage() {
             </Suspense>
           </div>
 
-          {/* Footer */}
-          <div className="mt-8 border-t border-zinc-200 pt-6 text-center dark:border-white/10">
+          <div className="mt-8 border-t border-zinc-200 pt-6 text-center">
             <Link
               href="/"
-              className="group inline-flex items-center text-sm font-medium text-zinc-600 transition-colors hover:text-black dark:text-zinc-400 dark:hover:text-white"
+              className="group inline-flex items-center text-sm font-medium text-zinc-600 transition-colors hover:text-black"
             >
-              <span className="mr-2 transition-transform group-hover:-translate-x-1">
-                ←
-              </span>
+              <span className="mr-2 transition-transform group-hover:-translate-x-1">&lt;-</span>
               Back to website
             </Link>
           </div>
-
         </div>
       </div>
     </main>

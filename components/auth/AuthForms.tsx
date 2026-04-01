@@ -28,7 +28,7 @@ type LoginValues = z.infer<typeof loginSchema>;
 type SignupValues = z.infer<typeof signupSchema>;
 
 const input =
-  "w-full rounded-xl border border-zinc-200/90 bg-white/90 px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-vigel-accent focus:ring-2 focus:ring-vigel-accent/25 dark:border-white/10 dark:bg-white/5 dark:text-white";
+  "w-full rounded-xl border border-zinc-200 bg-white px-4 py-3 text-sm text-zinc-900 outline-none transition focus:border-vigel-accent focus:ring-2 focus:ring-vigel-accent/25";
 
 export function LoginForm() {
   const router = useRouter();
@@ -73,12 +73,12 @@ export function LoginForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Email</label>
+        <label className="text-xs font-medium text-zinc-600">Email</label>
         <input type="email" className={cn(input, "mt-1")} {...register("email")} />
         {errors.email && <p className="mt-1 text-xs text-red-500">Valid email required</p>}
       </div>
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Password</label>
+        <label className="text-xs font-medium text-zinc-600">Password</label>
         <input type="password" className={cn(input, "mt-1")} {...register("password")} />
         {errors.password && <p className="mt-1 text-xs text-red-500">Min 8 characters</p>}
       </div>
@@ -93,7 +93,7 @@ export function LoginForm() {
       <button
         type="button"
         onClick={google}
-        className="group flex w-full items-center justify-center gap-3 rounded-full border border-zinc-200/80 py-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+        className="group flex w-full items-center justify-center gap-3 rounded-full border border-zinc-200 py-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50"
       >
         {/* 🔥 Google Logo */}
         <svg
@@ -110,7 +110,7 @@ export function LoginForm() {
       </button>
       <p className="text-center text-sm text-zinc-500">
         No account?{" "}
-        <Link href="/signup" className="font-medium text-vigel-green dark:text-vigel-accent">
+        <Link href="/signup" className="font-medium text-vigel-green">
           Create one
         </Link>
       </p>
@@ -160,17 +160,17 @@ export function SignupForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Name</label>
+        <label className="text-xs font-medium text-zinc-600">Name</label>
         <input className={cn(input, "mt-1")} {...register("name")} />
         {errors.name && <p className="mt-1 text-xs text-red-500">Enter your name</p>}
       </div>
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Email</label>
+        <label className="text-xs font-medium text-zinc-600">Email</label>
         <input type="email" className={cn(input, "mt-1")} {...register("email")} />
         {errors.email && <p className="mt-1 text-xs text-red-500">Valid email required</p>}
       </div>
       <div>
-        <label className="text-xs font-medium text-zinc-500 dark:text-zinc-400">Password</label>
+        <label className="text-xs font-medium text-zinc-600">Password</label>
         <input type="password" className={cn(input, "mt-1")} {...register("password")} />
         {errors.password && <p className="mt-1 text-xs text-red-500">Min 8 characters</p>}
       </div>
@@ -185,7 +185,7 @@ export function SignupForm() {
       <button
         type="button"
         onClick={google}
-        className="group flex w-full items-center justify-center gap-3 rounded-full border border-zinc-200/80 py-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50 dark:border-white/15 dark:text-white dark:hover:bg-white/5"
+        className="group flex w-full items-center justify-center gap-3 rounded-full border border-zinc-200 py-3 text-sm font-medium text-zinc-800 transition hover:bg-zinc-50"
       >
         {/* 🔥 Google Logo */}
         <svg
@@ -202,7 +202,7 @@ export function SignupForm() {
       </button>
       <p className="text-center text-sm text-zinc-500">
         Already have an account?{" "}
-        <Link href="/login" className="font-medium text-vigel-green dark:text-vigel-accent">
+        <Link href="/login" className="font-medium text-vigel-green">
           Sign in
         </Link>
       </p>

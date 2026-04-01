@@ -3,16 +3,16 @@
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { clearJwtSession, fetchAuthMe } from "@/lib/auth-api";
+import { clearJwtSession } from "@/lib/auth-api";
 import { getClientFirebase } from "@/lib/firebase";
 
 function Spinner({ label }: { label: string }) {
   return (
-    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 bg-transparent px-6 text-white">
+    <div className="flex min-h-[60vh] flex-col items-center justify-center gap-4 bg-white px-6 text-zinc-900">
       <div className="h-10 w-10 animate-spin rounded-full border-2 border-vigel-accent border-t-transparent" />
-      <p className="text-sm text-zinc-500 dark:text-zinc-400">{label}</p>
+      <p className="text-sm text-zinc-500">{label}</p>
     </div>
   );
 }
@@ -20,7 +20,6 @@ function Spinner({ label }: { label: string }) {
 export function DashboardGuard({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { user, loading, firebaseReady, jwtReady, jwtExchangeError } = useAuth();
-  const [jwtVerified, setJwtVerified] = useState(false);
 
   useEffect(() => {
     if (loading || !firebaseReady) return;
@@ -29,50 +28,20 @@ export function DashboardGuard({ children }: { children: React.ReactNode }) {
     }
   }, [user, loading, firebaseReady, router]);
 
-  useEffect(() => {
-    if (!user || !jwtReady) {
-      queueMicrotask(() => setJwtVerified(false));
-      return;
-    }
-
-    let cancelled = false;
-
-    (async () => {
-      const me = await fetchAuthMe();
-      if (cancelled) return;
-      if (!me) {
-        clearJwtSession();
-        try {
-          const { auth } = getClientFirebase();
-          if (auth) await signOut(auth);
-        } catch {
-          /* ignore */
-        }
-        router.replace("/login?next=/dashboard&reason=jwt_invalid");
-        return;
-      }
-      setJwtVerified(true);
-    })();
-
-    return () => {
-      cancelled = true;
-    };
-  }, [user, jwtReady, router]);
-
   if (loading || !firebaseReady) {
-    return <Spinner label="Loading…" />;
+    return <Spinner label="Loading..." />;
   }
 
   if (!user) {
-    return <Spinner label="Redirecting to sign in…" />;
+    return <Spinner label="Redirecting to sign in..." />;
   }
 
   if (jwtExchangeError) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 bg-transparent px-6 text-white">
-        <div className="max-w-md rounded-2xl border border-red-500/25 bg-red-500/10 px-6 py-5 text-center text-sm text-red-200">
-          <p className="font-medium text-white">Cannot open dashboard</p>
-          <p className="mt-2 text-red-200/90">{jwtExchangeError}</p>
+      <div className="flex min-h-[60vh] flex-col items-center justify-center gap-6 bg-white px-6 text-zinc-900">
+        <div className="max-w-md rounded-2xl border border-red-300 bg-red-50 px-6 py-5 text-center text-sm text-red-700">
+          <p className="font-medium text-red-900">Cannot open dashboard</p>
+          <p className="mt-2">{jwtExchangeError}</p>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
           <Link
@@ -89,7 +58,7 @@ export function DashboardGuard({ children }: { children: React.ReactNode }) {
               if (auth) await signOut(auth);
               router.replace("/login?next=/dashboard");
             }}
-            className="rounded-full border border-white/15 px-6 py-2.5 text-sm font-medium text-zinc-700 dark:text-zinc-200"
+            className="rounded-full border border-zinc-200 px-6 py-2.5 text-sm font-medium text-zinc-700 hover:bg-zinc-50"
           >
             Sign out
           </button>
@@ -99,11 +68,7 @@ export function DashboardGuard({ children }: { children: React.ReactNode }) {
   }
 
   if (!jwtReady) {
-    return <Spinner label="Establishing secure JWT session…" />;
-  }
-
-  if (!jwtVerified) {
-    return <Spinner label="Verifying JWT with server…" />;
+    return <Spinner label="Establishing secure JWT session..." />;
   }
 
   return <>{children}</>;

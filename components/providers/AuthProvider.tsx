@@ -106,7 +106,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     (async () => {
       try {
-        const idToken = await user.getIdToken(true);
+        const idToken = await user.getIdToken();
         await exchangeFirebaseIdToken(idToken);
         if (!cancelled) {
           setJwtReady(true);
