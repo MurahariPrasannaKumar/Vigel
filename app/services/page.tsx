@@ -3,38 +3,38 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Residential solar, commercial solar, and solar farming — engineered by VIGEL.",
+    "Photovoltaic modules, BIPV, flexible rollable modules, and smart energy product solutions by VIGEL.",
 };
 
 const blocks = [
   {
     id: "residential",
-    title: "Residential Solar",
-    body: "Custom rooftop arrays, storage-ready inverters, and monitoring that turns production into peace of mind. We obsess over curb appeal, roof integrity, and long-term warranties.",
+    title: "Photovoltaic Modules",
+    body: "We support rooftop and distributed installations with manufacturing-focused quality controls and deployment planning for reliable long-term output.",
     bullets: [
-      "Design & permitting",
-      "Premium modules & racking",
-      "Concierge commissioning",
+      "Module design and sourcing strategy",
+      "Site-fit integration guidance",
+      "Commissioning and performance readiness",
     ],
   },
   {
     id: "commercial",
-    title: "Commercial Solar",
-    body: "Peak demand management, resilient microgrids, and reporting that satisfies finance and ESG stakeholders alike. Built for campuses, logistics, and light industrial footprints.",
+    title: "BIPV & Smart BIPV Modules",
+    body: "Our building-integrated photovoltaic solutions prioritize flexibility, transparency, and color adaptability so power generation aligns with architectural design.",
     bullets: [
-      "Load profiling & tariffs",
-      "Fleet & multi-site rollouts",
-      "Ongoing performance ops",
+      "Facade and window integration",
+      "Design-friendly energy generation",
+      "Support for modern smart building use cases",
     ],
   },
   {
     id: "farming",
-    title: "Solar Farming",
-    body: "Utility-scale development with disciplined grid studies, land stewardship, and asset management tuned for decades of predictable yield.",
+    title: "Flexible & Rollable Solar Modules",
+    body: "VIGEL is developing lightweight, flexible photovoltaic formats suitable for varied surfaces and next-generation product integration use cases.",
     bullets: [
-      "Interconnection strategy",
-      "EPC coordination",
-      "Lifecycle analytics",
+      "Technology-led module formats",
+      "Adaptability for non-standard surfaces",
+      "Roadmap for smart shelters and urban solutions",
     ],
   },
 ];
@@ -42,11 +42,7 @@ const blocks = [
 export default function ServicesPage() {
   return (
     <main className="flex flex-1 flex-col bg-white">
-
-      {/* 🔥 HERO SECTION WITH FULL-WIDTH VIDEO */}
       <section className="relative isolate min-h-[100svh] overflow-hidden border-b border-zinc-200/80">
-
-        {/* 🎥 Background Video */}
         <video
           autoPlay
           loop
@@ -57,29 +53,26 @@ export default function ServicesPage() {
           <source src="/services-video.mp4" type="video/mp4" />
         </video>
 
-        {/* 🌑 Gradient Overlay */}
         <div className="absolute inset-0 z-[-1] bg-gradient-to-b from-black/70 via-black/50 to-black/80" />
 
-        {/* ✨ Content */}
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-24 pt-28 sm:px-8 text-white">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-24 pt-28 text-white sm:px-8">
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vigel-accent">
             Capabilities
           </p>
 
           <h1 className="mt-4 max-w-3xl font-[family-name:var(--font-syne)] text-4xl font-semibold sm:text-5xl">
-            Solar programs that feel inevitable at every scale.
+            Product and project capabilities for modern solar infrastructure.
           </h1>
 
           <p className="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-200 sm:text-base">
-            Whether you are powering a home, a headquarters, or hundreds of acres, VIGEL
-            brings the same product discipline: transparent modeling, elite execution, and
-            support that does not disappear after install.
+            From module technology to building-integrated solutions, VIGEL develops and
+            deploys renewable energy systems that balance technical performance,
+            manufacturability, and real-world usability.
           </p>
         </div>
       </section>
 
-      {/* 🔥 SERVICES SECTION */}
-      <section className="space-y-16 px-4 py-20 sm:px-6 lg:px-8 bg-zinc-50">
+      <section className="space-y-16 bg-zinc-50 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-16">
           {blocks.map((b) => (
             <article

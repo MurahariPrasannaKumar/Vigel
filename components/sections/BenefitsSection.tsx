@@ -11,18 +11,18 @@ if (typeof window !== "undefined") {
 
 const benefits = [
   {
-    title: "Performance-first engineering",
-    body: "Every array is modeled for irradiance, shading, and inverter efficiency before install.",
+    title: "Long-term savings",
+    body: "Solar generation reduces lifetime electricity spending with clear payback direction.",
     icon: Zap,
   },
   {
-    title: "Bankable quality",
-    body: "Tier-1 modules, disciplined workmanship, and monitoring that proves production.",
+    title: "Energy independence",
+    body: "On-site generation helps reduce dependence on unstable tariff conditions and outages.",
     icon: ShieldCheck,
   },
   {
-    title: "White-glove delivery",
-    body: "Permitting, interconnection, and commissioning handled end-to-end by one team.",
+    title: "Renewable and sustainable",
+    body: "Clean-energy deployment supports long-term environmental and operational goals.",
     icon: Cpu,
   },
 ];
@@ -44,9 +44,9 @@ export function BenefitsSection() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: root,
-            start: "top 60%", // Starts animating when section hits 60% of viewport
+            start: "top 60%",
             end: "bottom 80%",
-            scrub: 1, // Smooth scrubbing
+            scrub: 1,
           },
         });
 
@@ -60,7 +60,7 @@ export function BenefitsSection() {
             scale: 1,
             ease: "power3.out",
             stagger: 0.2,
-          }
+          },
         );
 
         if (lines.length) {
@@ -73,7 +73,7 @@ export function BenefitsSection() {
               ease: "power3.out",
               stagger: 0.2,
             },
-            "<0.1" // Starts slightly after the card begins animating
+            "<0.1",
           );
         }
       }
@@ -83,74 +83,60 @@ export function BenefitsSection() {
   }, []);
 
   return (
-    <section
-      ref={rootRef}
-      className="relative w-full overflow-hidden bg-white py-24 sm:py-32"
-    >
-      {/* SaaS-style Background Elements */}
+    <section ref={rootRef} className="relative w-full overflow-hidden bg-white py-24 sm:py-32">
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-30">
         <div className="h-[40rem] w-[40rem] rounded-full bg-vigel-accent/30 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto flex max-w-2xl flex-col gap-16 lg:max-w-none lg:flex-row lg:items-start lg:gap-20">
-
-          {/* Left Column - Sticky Content */}
           <div className="lg:sticky lg:top-32 lg:w-5/12 lg:shrink-0">
             <div className="flex items-center gap-2">
               <span className="h-1 w-6 rounded-full bg-vigel-accent"></span>
-              <p className="text-sm font-semibold tracking-wide text-vigel-accent uppercase">
-                Why VIGEL
+              <p className="text-sm font-semibold uppercase tracking-wide text-vigel-accent">
+                Advantages Of Solar Energy
               </p>
             </div>
 
-            <h2 className="mt-6 text-4xl font-medium tracking-tight sm:text-5xl font-[family-name:var(--font-syne)] text-zinc-900">
-              Solar that feels inevitable — engineered, cinematic, alive.
+            <h2 className="mt-6 font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl">
+              Practical benefits that stay relevant for decades.
             </h2>
 
             <p className="mt-6 text-lg leading-8 text-zinc-600">
-              We design energy systems the way premium products are crafted:
-              obsessive detail, transparent data, and a calm, confident
-              experience from first call to flip-the-switch.
+              VIGEL focuses on outcome-driven solar adoption where savings,
+              independence, and sustainability are measurable and meaningful.
             </p>
 
             <div className="mt-8 flex gap-4">
-              <button className="rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-sm hover:scale-105 transition-all">
-                Explore Tech
+              <button className="rounded-full bg-zinc-900 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:scale-105">
+                View solar advantages
               </button>
             </div>
           </div>
 
-          {/* Right Column - Scrolling Cards */}
           <div className="flex flex-1 flex-col gap-6 lg:mt-0">
-            {benefits.map((b, index) => (
+            {benefits.map((b) => (
               <div
                 key={b.title}
                 className="benefit-card group relative overflow-hidden rounded-3xl border border-black/5 bg-zinc-50 p-8 shadow-sm transition-all duration-300 hover:border-black/10 hover:shadow-md"
               >
-                {/* Decorative Line */}
                 <div className="benefit-line absolute left-0 top-0 h-px w-full origin-left bg-gradient-to-r from-vigel-green/50 via-zinc-200 to-transparent" />
 
                 <div className="flex items-start gap-6">
-                  {/* Icon Container */}
                   <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-black/5 bg-white shadow-sm transition-transform duration-300 group-hover:scale-110">
                     <b.icon className="h-6 w-6 text-vigel-green" strokeWidth={1.5} />
                   </div>
 
-                  {/* Content */}
                   <div>
-                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-900 group-hover:text-vigel-green transition-colors">
+                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-900 transition-colors group-hover:text-vigel-green">
                       {b.title}
                     </h3>
-                    <p className="mt-3 leading-relaxed text-zinc-600">
-                      {b.body}
-                    </p>
+                    <p className="mt-3 leading-relaxed text-zinc-600">{b.body}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
-
         </div>
       </div>
     </section>

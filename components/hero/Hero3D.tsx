@@ -26,7 +26,6 @@ const heroItem: Variants = {
 export function Hero3D() {
   return (
     <section className="relative isolate min-h-[100svh] overflow-hidden">
-      {/* Background Video */}
       <video
         autoPlay
         loop
@@ -51,32 +50,27 @@ export function Hero3D() {
         >
           <motion.div variants={heroItem} className="flex items-center gap-3">
             <span className="h-px w-8 bg-zinc-500/60" aria-hidden />
-            <p className="text-eyebrow text-zinc-300">
-              VI Green Energy Limited
-            </p>
+            <p className="text-eyebrow text-zinc-300">VI Green Energy Limited</p>
           </motion.div>
           <motion.h1
             variants={heroItem}
             className="mt-6 font-[family-name:var(--font-syne)] font-semibold tracking-tight text-white [font-size:clamp(2.5rem,5vw+1rem,4.5rem)] [line-height:1.02]"
           >
-            Solar infrastructure
-            <span className="text-gradient"> built like a flagship product.</span>
+            Solar energy solutions
+            <span className="text-gradient"> for the next generation.</span>
           </motion.h1>
           <motion.p
             variants={heroItem}
             className="mt-8 max-w-lg text-sm leading-relaxed text-zinc-300 sm:text-base"
           >
-            From elegant residential arrays to utility-scale solar farming, VIGEL pairs
-            rigorous engineering with a calm, precise digital experience — so clean energy
-            feels as inevitable as the sunrise.
+            VIGEL develops renewable energy products and practical solar solutions,
+            including photovoltaic modules, BIPV systems, flexible rollable modules, and
+            smart shelter technologies.
           </motion.p>
-          <motion.div
-            variants={heroItem}
-            className="mt-10 flex flex-wrap items-center gap-5"
-          >
-            <PrimaryCTA href="/contact">Start your project</PrimaryCTA>
+          <motion.div variants={heroItem} className="mt-10 flex flex-wrap items-center gap-5">
+            <PrimaryCTA href="/contact">Contact our team</PrimaryCTA>
             <TextLink href="/services" className="text-zinc-200 hover:text-white">
-              View capabilities
+              View products
             </TextLink>
           </motion.div>
         </motion.div>

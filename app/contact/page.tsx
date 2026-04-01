@@ -3,7 +3,8 @@ import { ContactForm } from "@/components/contact/ContactForm";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Request a consultation with VIGEL — solar for homes, businesses, and utilities.",
+  description:
+    "Contact VI Green Energy Limited for photovoltaic products, BIPV solutions, and renewable energy project enquiries.",
 };
 
 export default function ContactPage() {

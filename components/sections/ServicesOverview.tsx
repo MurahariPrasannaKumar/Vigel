@@ -1,27 +1,27 @@
 "use client";
 
-import { ArrowRight, Leaf, Shield, Zap } from "lucide-react";
+import { ArrowRight, Shield, Zap } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
 const services = [
   {
-    title: "Residential Power",
-    desc: "Bespoke rooftop arrays engineered for high yield and absolute architectural harmony.",
+    title: "Photovoltaic Modules",
+    desc: "Module-focused solutions for distributed and rooftop applications with reliable output planning.",
     icon: HomeIcon,
-    link: "/services#residential"
+    link: "/services#residential",
   },
   {
-    title: "Commercial Scale",
-    desc: "Peak-shaving and reliable microgrids designed to satisfy ESG stakeholders.",
+    title: "BIPV & Smart BIPV",
+    desc: "Building-integrated modules with flexibility, transparency, and design compatibility.",
     icon: Shield,
-    link: "/services#commercial"
+    link: "/services#commercial",
   },
   {
-    title: "Solar Farming",
-    desc: "Utility-scale development with lifecycle asset modeling for maximum predictable yield.",
+    title: "Flexible Solar Formats",
+    desc: "Rollable and adaptable solar modules developed for next-generation product use cases.",
     icon: Zap,
-    link: "/services#farming"
+    link: "/services#farming",
   },
 ];
 
@@ -49,34 +49,31 @@ export function ServicesOverview() {
   return (
     <section className="relative overflow-hidden bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        
-        {/* Header Segment */}
-        <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between mb-16">
+        <div className="mb-16 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <h2 className="text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl font-[family-name:var(--font-syne)]">
-              Infrastructure for every scale.
+            <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl">
+              Technology built for practical deployment.
             </h2>
             <p className="mt-4 text-lg text-zinc-600">
-              From historic master-planned neighborhoods to sprawling industrial footprints.
+              From product innovation to on-grid execution in Kurnool and beyond.
             </p>
           </div>
           <Link
             href="/services"
-            className="group flex items-center gap-2 text-sm font-semibold text-zinc-900 transition-colors hover:text-blue-600 whitespace-nowrap"
+            className="group flex items-center gap-2 whitespace-nowrap text-sm font-semibold text-zinc-900 transition-colors hover:text-blue-600"
           >
             View all capabilities
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Link>
         </div>
 
-        {/* Services Layout */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
           {services.map((service, i) => (
-            <div 
+            <div
               key={service.title}
               className={cn(
                 "group relative flex flex-col justify-between overflow-hidden rounded-3xl bg-zinc-50 p-8 transition-all duration-500 hover:bg-zinc-100 hover:shadow-lg",
-                i === 1 && "md:-translate-y-8" // Offset middle row slightly for premium design
+                i === 1 && "md:-translate-y-8",
               )}
             >
               <div>
@@ -86,9 +83,7 @@ export function ServicesOverview() {
                 <h3 className="mt-6 font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900">
                   {service.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  {service.desc}
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-600">{service.desc}</p>
               </div>
 
               <div className="mt-12">
@@ -102,7 +97,6 @@ export function ServicesOverview() {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

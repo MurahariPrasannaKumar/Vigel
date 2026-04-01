@@ -34,33 +34,33 @@ const Counter = memo(function Counter({
 });
 
 const stats = [
-  { 
-    label: "Megawatts deployed", 
-    value: 420, 
-    suffix: "+", 
-    icon: Zap, 
-    desc: "Utility-scale generation capacity installed and active." 
+  {
+    label: "Soltria ambient output",
+    value: 1,
+    suffix: " unit/day",
+    icon: Zap,
+    desc: "Profile target for compact plant-like generation under ambient-light conditions.",
   },
-  { 
-    label: "Homes powered", 
-    value: 12800, 
-    suffix: "+", 
-    icon: Home, 
-    desc: "Clean energy delivered to residential communities." 
+  {
+    label: "SOFTCELL output",
+    value: 350,
+    suffix: " uW",
+    icon: Home,
+    desc: "Approximate per-cell output equivalent to 0.35 mW under standard test conditions.",
   },
-  { 
-    label: "CO₂ offset (tons / yr)", 
-    value: 96000, 
-    suffix: "", 
-    icon: Leaf, 
-    desc: "Carbon emission reduction driving global impact." 
+  {
+    label: "SOFTFORM max size",
+    value: 500,
+    suffix: " mm",
+    icon: Leaf,
+    desc: "Current reference maximum size from profile specifications (extendable roadmap).",
   },
-  { 
-    label: "Client satisfaction", 
-    value: 99, 
-    suffix: "%", 
-    icon: Star, 
-    desc: "Five-star premium experience from design to flip-the-switch." 
+  {
+    label: "Kurnool reference project",
+    value: 33,
+    suffix: "00 W",
+    icon: Star,
+    desc: "On-grid project reference highlighted in company profile materials (3.3 kW).",
   },
 ];
 
@@ -80,30 +80,23 @@ export const AnimatedStats = memo(function AnimatedStats() {
           }}
           className="group relative h-[250px] w-full cursor-pointer [perspective:1200px]"
         >
-          {/* Inner 3D Container */}
           <div className="relative h-full w-full transition-all duration-[800ms] [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-            
-            {/* Front Face */}
             <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center gap-6 rounded-2xl border border-white/10 bg-zinc-900/40 p-6 text-center shadow-xl backdrop-blur-md [backface-visibility:hidden]">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-white/5 border border-white/10 shadow-inner transition-colors duration-500 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/30">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/5 shadow-inner transition-colors duration-500 group-hover:border-emerald-500/30 group-hover:bg-emerald-500/10">
                 <s.icon className="h-7 w-7 text-emerald-400" strokeWidth={1.5} />
               </div>
-              <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-100 px-4">
+              <h3 className="px-4 font-[family-name:var(--font-syne)] text-xl font-medium text-zinc-100">
                 {s.label}
               </h3>
             </div>
 
-            {/* Back Face */}
             <div className="absolute inset-0 flex h-full w-full flex-col items-center justify-center rounded-2xl border border-emerald-500/30 bg-zinc-900/60 p-6 text-center shadow-2xl backdrop-blur-md [backface-visibility:hidden] [transform:rotateY(180deg)]">
               <p className="font-[family-name:var(--font-syne)] text-4xl font-semibold text-emerald-400 sm:text-5xl">
                 <Counter value={s.value} suffix={s.suffix} />
               </p>
               <div className="mt-4 h-px w-12 bg-emerald-500/30" />
-              <p className="mt-4 text-sm leading-relaxed text-emerald-100/70">
-                {s.desc}
-              </p>
+              <p className="mt-4 text-sm leading-relaxed text-emerald-100/70">{s.desc}</p>
             </div>
-
           </div>
         </motion.div>
       ))}

@@ -1,200 +1,301 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import Link from "next/link";
-import { memo, MouseEvent } from "react";
-import { Building2, Home, Zap, ArrowRight } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/cn";
 
-const services = [
+gsap.registerPlugin(ScrollTrigger);
+
+type ServiceItem = {
+  title: string;
+  img: string;
+  details: string;
+  highlights: string[];
+  availability: string;
+};
+
+const services: ServiceItem[] = [
   {
-    title: "Residential Solar",
-    desc: "Bespoke rooftop systems engineered for yield, aesthetics, and long-term reliability.",
-    href: "/services#residential",
-    tag: "Homes",
-    icon: Home,
-    theme: {
-      floor: "group-hover:from-purple-500/30 group-hover:border-purple-400/50 group-hover:shadow-[0_0_40px_rgba(168,85,247,0.3)]",
-      glow: "bg-purple-400/20",
-      iconHover: "group-hover:text-purple-600",
-      rotation: "group-hover:-rotate-12",
-    },
+    title: "Photovoltaic Modules",
+    img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Reliable module solutions for distributed and rooftop projects with performance-focused planning and deployment readiness.",
+    highlights: [
+      "Module-focused design and planning",
+      "Reliable distributed deployment strategy",
+      "Performance-oriented commissioning approach",
+    ],
+    availability: "Available for consultation and project planning throughout the week.",
   },
   {
-    title: "Commercial Solar",
-    desc: "Peak-shaving, ESG reporting, and resilient power for campuses and industrial sites.",
-    href: "/services#commercial",
-    tag: "Business",
-    icon: Building2,
-    theme: {
-      floor: "group-hover:from-blue-500/30 group-hover:border-blue-400/50 group-hover:shadow-[0_0_40px_rgba(59,130,246,0.3)]",
-      glow: "bg-blue-400/20",
-      iconHover: "group-hover:text-blue-600",
-      rotation: "group-hover:rotate-[15deg]",
-    },
+    title: "BIPV & Smart BIPV",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Building-integrated photovoltaic solutions designed for modern architecture with flexibility, transparency, and design compatibility.",
+    highlights: [
+      "Facade and window integration options",
+      "Transparency and color adaptability",
+      "Architecture-friendly solar implementation",
+    ],
+    availability: "Specialist discussions and design evaluation sessions are available by appointment.",
   },
   {
-    title: "Solar Farming",
-    desc: "Utility-scale development, grid integration, and lifecycle asset performance.",
-    href: "/services#farming",
-    tag: "Utility",
-    icon: Zap,
-    theme: {
-      floor: "group-hover:from-teal-500/30 group-hover:border-teal-400/50 group-hover:shadow-[0_0_40px_rgba(20,184,166,0.3)]",
-      glow: "bg-teal-400/20",
-      iconHover: "group-hover:text-teal-600",
-      rotation: "group-hover:-rotate-6",
-    },
+    title: "Flexible & Rollable Solar",
+    img: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Adaptable photovoltaic formats for advanced product and infrastructure applications, including evolving smart-solution pathways.",
+    highlights: [
+      "Flexible photovoltaic form factors",
+      "Designed for diverse deployment surfaces",
+      "Aligned with smart shelter product direction",
+    ],
+    availability: "Roadmap-aligned implementation support available for pilot and scaling use cases.",
+  },
+  {
+    title: "Photovoltaic Modules",
+    img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Reliable module solutions for distributed and rooftop projects with performance-focused planning and deployment readiness.",
+    highlights: [
+      "Module-focused design and planning",
+      "Reliable distributed deployment strategy",
+      "Performance-oriented commissioning approach",
+    ],
+    availability: "Available for consultation and project planning throughout the week.",
+  },
+  {
+    title: "BIPV & Smart BIPV",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Building-integrated photovoltaic solutions designed for modern architecture with flexibility, transparency, and design compatibility.",
+    highlights: [
+      "Facade and window integration options",
+      "Transparency and color adaptability",
+      "Architecture-friendly solar implementation",
+    ],
+    availability: "Specialist discussions and design evaluation sessions are available by appointment.",
+  },
+  {
+    title: "Flexible & Rollable Solar",
+    img: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Adaptable photovoltaic formats for advanced product and infrastructure applications, including evolving smart-solution pathways.",
+    highlights: [
+      "Flexible photovoltaic form factors",
+      "Designed for diverse deployment surfaces",
+      "Aligned with smart shelter product direction",
+    ],
+    availability: "Roadmap-aligned implementation support available for pilot and scaling use cases.",
+  },
+  {
+    title: "Photovoltaic Modules",
+    img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Reliable module solutions for distributed and rooftop projects with performance-focused planning and deployment readiness.",
+    highlights: [
+      "Module-focused design and planning",
+      "Reliable distributed deployment strategy",
+      "Performance-oriented commissioning approach",
+    ],
+    availability: "Available for consultation and project planning throughout the week.",
+  },
+  {
+    title: "BIPV & Smart BIPV",
+    img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Building-integrated photovoltaic solutions designed for modern architecture with flexibility, transparency, and design compatibility.",
+    highlights: [
+      "Facade and window integration options",
+      "Transparency and color adaptability",
+      "Architecture-friendly solar implementation",
+    ],
+    availability: "Specialist discussions and design evaluation sessions are available by appointment.",
+  },
+  {
+    title: "Flexible & Rollable Solar",
+    img: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=900",
+    details:
+      "Adaptable photovoltaic formats for advanced product and infrastructure applications, including evolving smart-solution pathways.",
+    highlights: [
+      "Flexible photovoltaic form factors",
+      "Designed for diverse deployment surfaces",
+      "Aligned with smart shelter product direction",
+    ],
+    availability: "Roadmap-aligned implementation support available for pilot and scaling use cases.",
   },
 ];
 
-const springTransition = {
-  type: "spring" as const,
-  stiffness: 300,
-  damping: 20,
-};
+export const ServicesGrid = React.memo(function ServicesGrid() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const [selectedService, setSelectedService] = useState<ServiceItem | null>(null);
+  const denseLayout = services.length >= 7;
+  const center = (services.length - 1) / 2;
+  const spreadPerCard = services.length > 1 ? 70 / (services.length - 1) : 0;
+  const sectionHeightVh = Math.max(320, 140 + services.length * 26);
 
-function ServiceCard({
-  service,
-  index,
-}: {
-  service: (typeof services)[0];
-  index: number;
-}) {
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    if (!sectionEl) return;
 
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }: MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
-  }
+    const cardElements = cardsRef.current.filter((el): el is HTMLDivElement => el !== null);
+    if (!cardElements.length) return;
+
+    const ctx = gsap.context(() => {
+      gsap.set(cardElements, {
+        rotation: (i) => (i - center) * spreadPerCard + 24,
+      });
+
+      gsap.to(cardElements, {
+        rotation: (i) => (i - center) * spreadPerCard - 24,
+        ease: "none",
+        stagger: { each: 0.05 },
+        scrollTrigger: {
+          trigger: sectionEl,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1,
+          invalidateOnRefresh: true,
+        },
+      });
+    }, sectionEl);
+
+    const refreshId = window.setTimeout(() => ScrollTrigger.refresh(), 60);
+
+    return () => {
+      window.clearTimeout(refreshId);
+      ctx.revert();
+    };
+  }, [center, spreadPerCard]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.15 }}
-      className="h-full"
-    >
-      <Link href={service.href} className="block h-full group">
-        <motion.article
-          onMouseMove={handleMouseMove}
-          whileHover={{ y: -6, scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={springTransition}
-          className={cn(
-            // FIX: Removed overflow-hidden, added z-10 hover:z-50
-            "relative flex h-full flex-col rounded-2xl p-8 z-10 hover:z-50",
-            "bg-white border border-black/5 shadow-md",
-            "transition-all duration-500 hover:border-black/10 hover:shadow-xl",
-            "[perspective:1200px]" // Required for the 3D children
-          )}
-        >
-          {/* Spotlight Glow Effect - FIX: Wrapped in its own overflow-hidden container */}
-          <div className="absolute inset-0 overflow-hidden rounded-2xl pointer-events-none">
-            <motion.div
-              className="absolute -inset-px opacity-0 group-hover:opacity-100 transition duration-300"
-              style={{
-                background: useMotionTemplate`
-                  radial-gradient(
-                    400px circle at ${mouseX}px ${mouseY}px,
-                    rgba(22, 163, 74, 0.05),
-                    transparent 80%
-                  )
-                `,
-              }}
-            />
-          </div>
-
-          {/* Added relative z-20 so content stays above the background glow */}
-          <div className="flex items-center justify-between mb-8 relative z-20">
-            {/* The 3D Portal Wrapper */}
-            <div className="relative flex items-center justify-center w-14 h-14 [transform-style:preserve-3d]">
-
-              {/* Layer 1: The Box -> Morphs into a 3D Portal Floor */}
-              <div
-                className={cn(
-                  "absolute inset-0 rounded-2xl bg-zinc-50 border border-zinc-200",
-                  "transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]",
-                  "group-hover:rounded-full group-hover:bg-gradient-to-t group-hover:to-transparent",
-                  "group-hover:[transform:rotateX(70deg)_translateY(20px)_scale(1.6)]",
-                  service.theme.floor
-                )}
-              />
-
-              {/* Layer 2: Core Portal Glow */}
-              <div
-                className={cn(
-                  "absolute inset-0 rounded-full blur-md opacity-0",
-                  "transition-all duration-[800ms]",
-                  "group-hover:opacity-100 group-hover:[transform:rotateX(70deg)_translateY(20px)_scale(0.8)]",
-                  service.theme.glow
-                )}
-              />
-
-              {/* Layer 3: The Floating Logo (Pops OUT wildly now) */}
-              <service.icon
-                className={cn(
-                  "relative z-30 w-6 h-6 text-zinc-500", // Increased z-index
-                  "transition-all duration-[800ms] ease-[cubic-bezier(0.34,1.56,0.64,1)]",
-                  "group-hover:-translate-y-16 group-hover:scale-[2.5] group-hover:drop-shadow-[0_20px_15px_rgba(0,0,0,0.2)]", // Exaggerated the pop-out height and scale
-                  service.theme.rotation,
-                  service.theme.iconHover
-                )}
-              />
+    <div id="services" className="services-container relative scroll-mt-24 bg-white">
+      <section
+        ref={sectionRef}
+        className="relative w-full bg-[#ffffff] font-sans"
+        style={{ height: `${sectionHeightVh}vh` }}
+      >
+        <div className="sticky top-0 h-screen overflow-hidden bg-[#ffffff]">
+          <div className="pointer-events-none absolute left-0 top-0 z-20 w-full px-8 pt-24 lg:px-12">
+            <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between lg:flex-row lg:items-end">
+              <div className="pointer-events-auto">
+                <span className="mb-4 block text-[15px] font-medium uppercase tracking-wide text-gray-900">
+                  We Have Your Solar Needs Covered
+                </span>
+                <h2 className="text-4xl font-medium leading-[1.1] text-black lg:text-[52px]">
+                  Renewable Solutions for Today&apos;s Infrastructure
+                </h2>
+              </div>
+              <a
+                href="/contact"
+                className="pointer-events-auto mt-8 flex items-center gap-2 rounded-full bg-[#0B64F4] px-8 py-4 text-sm font-medium text-white transition-colors lg:mt-0"
+              >
+                Contact VIGEL Team
+              </a>
             </div>
-
-            {/* Tag Badge */}
-            <span
-              className={cn(
-                "inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium tracking-wide transition-all duration-300",
-                "border-zinc-200 bg-zinc-50 text-zinc-600",
-                "group-hover:-translate-y-1 group-hover:shadow-sm relative z-20"
-              )}
-            >
-              {service.tag}
-            </span>
           </div>
 
-          {/* Text Content */}
-          <div className="relative z-20 flex-1 flex flex-col">
-            <h3 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900 transition-transform duration-700 group-hover:-translate-y-1">
-              {service.title}
-            </h3>
-            <p className="mt-3 leading-relaxed text-zinc-600 text-sm transition-transform duration-700 group-hover:-translate-y-1 group-hover:text-zinc-500">
-              {service.desc}
-            </p>
+          <div className="absolute left-0 top-0 z-10 mt-24 flex h-full w-full justify-center">
+            {services.map((service, index) => (
+              <div
+                key={`${service.title}-${index}`}
+                ref={(el) => {
+                  cardsRef.current[index] = el;
+                }}
+                className="pointer-events-none absolute left-0 top-0 h-full w-full"
+                style={{
+                  transformOrigin: "50% 280%",
+                  willChange: "transform",
+                }}
+              >
+                <div
+                  className={cn(
+                    "group pointer-events-auto absolute left-1/2 -translate-x-1/2 cursor-pointer overflow-hidden rounded-[22px] border border-gray-200/50 bg-white shadow-[0_15px_35px_rgba(0,0,0,0.08)]",
+                    denseLayout
+                      ? "top-[26%] h-[255px] w-[190px] lg:h-[300px] lg:w-[220px]"
+                      : "top-[30%] h-[280px] w-[210px] lg:h-[320px] lg:w-[240px]",
+                  )}
+                  onClick={() => setSelectedService(service)}
+                >
+                  <div className="relative h-full w-full">
+                    <img
+                      src={service.img}
+                      alt={service.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-x-0 bottom-0 flex h-[45%] items-end justify-center bg-gradient-to-t from-gray-200 via-gray-200/80 to-transparent pb-6">
+                      <h3 className="px-4 text-center text-[17px] font-medium tracking-tight text-gray-900">
+                        {service.title}
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+        </div>
+      </section>
 
-          {/* Call to Action */}
-          <div className="relative z-20 mt-8 flex items-center gap-2 text-sm font-semibold text-zinc-500 transition-colors duration-300 group-hover:text-blue-700">
-            <span>Explore Details</span>
-            <motion.div
-              initial={false}
-              whileHover={{ x: 4 }}
-              transition={springTransition}
-            >
-              <ArrowRight className="h-4 w-4" />
-            </motion.div>
+      {selectedService && (
+        <div
+          className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm"
+          onClick={() => setSelectedService(null)}
+        >
+          <div
+            className="w-full max-w-xl overflow-hidden rounded-3xl bg-white shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="relative h-56">
+              <img
+                src={selectedService.img}
+                alt={selectedService.title}
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
+              <button
+                type="button"
+                onClick={() => setSelectedService(null)}
+                className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-md transition hover:bg-white/35"
+                aria-label="Close service details"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+            <div className="p-7">
+              <div className="flex items-start justify-between gap-4">
+                <h3 className="text-2xl font-semibold text-gray-900">{selectedService.title}</h3>
+              </div>
+              <p className="mt-3 text-[15px] leading-relaxed text-gray-600">{selectedService.details}</p>
+              <div className="mt-5">
+                <h4 className="text-sm font-semibold uppercase tracking-wide text-gray-900">
+                  Key Highlights
+                </h4>
+                <ul className="mt-2 space-y-2">
+                  {selectedService.highlights.map((point) => (
+                    <li key={point} className="flex items-start gap-2 text-sm text-gray-600">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#0B64F4]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="mt-5 rounded-2xl border border-blue-100 bg-blue-50 p-4">
+                <p className="text-sm text-blue-900">
+                  <span className="font-semibold">Availability:</span> {selectedService.availability}
+                </p>
+              </div>
+            </div>
           </div>
-        </motion.article>
-      </Link>
-    </motion.div>
-  );
-}
-
-export const ServicesGrid = memo(function ServicesGrid() {
-  return (
-    <div className="grid gap-6 md:grid-cols-3 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-      {services.map((s, i) => (
-        <ServiceCard key={s.title} service={s} index={i} />
-      ))}
+        </div>
+      )}
     </div>
   );
 });

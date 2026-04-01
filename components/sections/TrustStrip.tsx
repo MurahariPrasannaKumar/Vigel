@@ -3,14 +3,14 @@
 import { motion } from "framer-motion";
 
 const clients = [
-  "Lumina Grid",
-  "AeroDynamics",
-  "Meta Space",
-  "Helix Ventures",
-  "Echo Systems",
-  "Nimbus Works",
-  "Vertex Energy",
-  "Quantum Labs",
+  "SOFTCELL",
+  "SOFTFORM",
+  "SOFTGOODS",
+  "BIPV MODULES",
+  "SMART SHELTERS",
+  "FLEXIBLE MODULES",
+  "VI GREEN ENERGY",
+  "KURNOOL PROJECT",
 ];
 
 export function TrustStrip() {

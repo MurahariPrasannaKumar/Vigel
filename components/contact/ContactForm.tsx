@@ -64,34 +64,29 @@ export function ContactForm() {
     "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-2 focus:ring-black/5 transition";
 
   return (
-    <section className="bg-white py-20 px-6">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-start">
-
-        {/* LEFT - FORM */}
+    <section className="bg-white px-6 py-20">
+      <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm"
+          className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
         >
-          <h2 className="text-3xl font-semibold text-gray-900">
-            Let’s talk about your project
-          </h2>
-          <p className="text-gray-500 mt-2 text-sm">
-            Fill the form and our team will get back within 24 hours.
+          <h2 className="text-3xl font-semibold text-gray-900">Contact VI Green Energy Limited</h2>
+          <p className="mt-2 text-sm text-gray-500">
+            Share your project requirement for photovoltaic products, BIPV, or smart solar
+            solutions. Our team will respond shortly.
           </p>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mt-8">
+          <form onSubmit={handleSubmit(onSubmit)} className="mt-8 space-y-5">
             <input type="text" className="hidden" {...register("company")} />
 
             <div>
               <label className="text-xs font-medium text-gray-500">Name</label>
               <input className={cn(field, "mt-2")} {...register("name")} />
-              {errors.name && (
-                <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
-              )}
+              {errors.name && <p className="mt-1 text-xs text-red-500">{errors.name.message}</p>}
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="text-xs font-medium text-gray-500">Email</label>
                 <input className={cn(field, "mt-2")} {...register("email")} />
@@ -104,41 +99,30 @@ export function ContactForm() {
 
             <div>
               <label className="text-xs font-medium text-gray-500">Message</label>
-              <textarea
-                rows={4}
-                className={cn(field, "mt-2 resize-none")}
-                {...register("message")}
-              />
+              <textarea rows={4} className={cn(field, "mt-2 resize-none")} {...register("message")} />
             </div>
 
-            {status === "ok" && (
-              <p className="text-green-600 text-sm">
-                ✅ Message sent successfully!
-              </p>
-            )}
+            {status === "ok" && <p className="text-sm text-green-600">Message sent successfully.</p>}
 
-            {status === "err" && (
-              <p className="text-red-500 text-sm">{errorMsg}</p>
-            )}
+            {status === "err" && <p className="text-sm text-red-500">{errorMsg}</p>}
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-black text-white py-3 rounded-full text-sm font-medium hover:bg-gray-900 transition"
+              className="w-full rounded-full bg-black py-3 text-sm font-medium text-white transition hover:bg-gray-900"
             >
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Sending..." : "Submit enquiry"}
             </button>
           </form>
         </motion.div>
 
-        {/* RIGHT - MAP */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl overflow-hidden border border-gray-200 shadow-sm h-[500px]"
+          className="h-[500px] overflow-hidden rounded-2xl border border-gray-200 shadow-sm"
         >
           <iframe
-            src="https://www.google.com/maps?q=Angondahalli,Bangalore&output=embed"
+            src="https://www.google.com/maps?q=Santosh%20Nagar%2C%20Kallur%2C%20Kurnool&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}

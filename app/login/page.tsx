@@ -37,7 +37,9 @@ export default function LoginPage() {
               <h1 className="font-[family-name:var(--font-syne)] text-2xl font-bold tracking-tight text-zinc-900">
                 Welcome back
               </h1>
-              <p className="text-sm text-zinc-600">Sign in to your VIGEL account</p>
+              <p className="text-sm text-zinc-600">
+                Sign in to your VI Green Energy account
+              </p>
             </div>
           </div>
 

@@ -24,27 +24,27 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vigel.energy"),
+  metadataBase: new URL("https://www.vigel.net"),
   title: {
-    default: "VIGEL — VI Green Energy Limited",
-    template: "%s · VIGEL",
+    default: "VIGEL - VI Green Energy Limited",
+    template: "%s | VIGEL",
   },
   description:
-    "Premium solar energy for residential, commercial, and utility-scale projects. Engineering-led installation, monitoring, and lifecycle performance.",
+    "VI Green Energy Limited manufactures renewable energy products including photovoltaic modules, flexible rollable modules, and BIPV solutions.",
   openGraph: {
-    title: "VIGEL — VI Green Energy Limited",
+    title: "VIGEL - VI Green Energy Limited",
     description:
-      "Solar infrastructure built like a flagship product — residential, commercial, and solar farming.",
-    url: "https://vigel.energy",
+      "Renewable energy manufacturing and project development with SOFTCELL, SOFTFORM, SOFTGOODS, BIPV modules, and smart shelters.",
+    url: "https://www.vigel.net",
     siteName: "VIGEL",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "VIGEL — VI Green Energy Limited",
+    title: "VIGEL - VI Green Energy Limited",
     description:
-      "Premium solar design, installation, and energy strategy for homes, businesses, and utility-scale projects.",
+      "Solar and renewable energy innovation from VI Green Energy Limited, Kurnool, India.",
   },
   robots: { index: true, follow: true },
 };

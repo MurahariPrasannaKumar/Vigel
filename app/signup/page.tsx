@@ -20,7 +20,7 @@ export default function SignupPage() {
               Create your account
             </h1>
             <p className="mt-3 text-sm text-zinc-600">
-              Join VIGEL to track proposals and manage your solar journey.
+              Join VI Green Energy to manage your profile and project updates.
             </p>
           </div>
 
