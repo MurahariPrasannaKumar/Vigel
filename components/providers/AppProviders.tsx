@@ -2,11 +2,14 @@
 
 import { AuthProvider } from "./AuthProvider";
 import { SmoothScrollProvider } from "./SmoothScrollProvider";
+import { LoaderProvider } from "./LoaderProvider";
 
 export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
-      <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      <LoaderProvider>
+        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+      </LoaderProvider>
     </AuthProvider>
   );
 }
