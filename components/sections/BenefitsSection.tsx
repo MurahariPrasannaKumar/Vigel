@@ -213,10 +213,10 @@ export function BenefitsSection() {
   }, []);
 
   return (
-    <section ref={rootRef} className="relative w-full bg-zinc-950 py-24 lg:py-40">
+    <section ref={rootRef} className="section-dark relative w-full py-24 lg:py-40">
       {/* Premium Background Elements */}
       <div className="absolute top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
-      <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full bg-emerald-900/10 blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-12">
@@ -232,10 +232,10 @@ export function BenefitsSection() {
 
             <h2 className="mt-8 font-[family-name:var(--font-syne)] text-5xl font-medium leading-[1.1] tracking-tight text-white lg:text-7xl">
               Future-proof <br />
-              <span className="text-zinc-500">infrastructure.</span>
+              <span className="text-zinc-400">infrastructure.</span>
             </h2>
 
-            <p className="mt-8 max-w-md text-lg leading-relaxed text-zinc-400">
+            <p className="mt-8 max-w-md text-lg leading-relaxed text-zinc-300">
               VIGEL delivers outcome-driven solar integration where the benefits
               are as transparent as they are measurable.
             </p>
@@ -246,7 +246,7 @@ export function BenefitsSection() {
                   View Full Roadmap
                   <span className="absolute -bottom-1 left-0 h-px w-full bg-emerald-500 origin-right scale-x-0 transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100" />
                 </span>
-                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 transition-transform group-hover:rotate-45 group-hover:bg-emerald-500 group-hover:text-black">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full border border-zinc-700 bg-zinc-900 text-zinc-100 transition-transform group-hover:rotate-45 group-hover:bg-emerald-500 group-hover:text-white group-hover:border-emerald-500">
                   <ArrowUpRight className="h-4 w-4" />
                 </div>
               </button>
@@ -259,17 +259,17 @@ export function BenefitsSection() {
               <div
                 key={b.title}
                 className={cn(
-                  "benefit-card group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-zinc-900/40 p-8 lg:p-12 shadow-2xl backdrop-blur-xl transition-colors hover:border-emerald-500/30",
-                  "before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100"
+                  "benefit-card group relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900 p-8 lg:p-12 shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-colors hover:border-emerald-500/40 hover:bg-zinc-900",
+                  "before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b before:from-emerald-500/10 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100"
                 )}
               >
                 {/* Decorative Elements */}
                 <div className="absolute top-0 right-0 p-8 opacity-10 transition-opacity group-hover:opacity-100">
-                  <span className="font-mono text-4xl font-black text-white">0{i + 1}</span>
+                  <span className="font-mono text-4xl font-black text-zinc-100">0{i + 1}</span>
                 </div>
 
                 <div className="flex flex-col gap-8 sm:flex-row sm:items-start">
-                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400 transition-all duration-500 group-hover:bg-emerald-500 group-hover:text-black group-hover:shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                  <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-300 transition-all duration-500 group-hover:bg-emerald-500 group-hover:text-white group-hover:shadow-lg">
                     <b.icon className="h-7 w-7" strokeWidth={1.5} />
                   </div>
 
@@ -278,11 +278,11 @@ export function BenefitsSection() {
                       <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium text-white lg:text-3xl">
                         {b.title}
                       </h3>
-                      <span className="rounded-full bg-zinc-800 px-3 py-1 text-[10px] font-bold text-zinc-500 transition-colors group-hover:bg-emerald-500/20 group-hover:text-emerald-400">
+                      <span className="rounded-full bg-zinc-800 px-3 py-1 text-[10px] font-bold text-zinc-300 transition-colors group-hover:bg-emerald-500/20 group-hover:text-emerald-300">
                         {b.metric}
                       </span>
                     </div>
-                    <p className="mt-4 text-lg leading-relaxed text-zinc-400 group-hover:text-zinc-300">
+                    <p className="mt-4 text-lg leading-relaxed text-zinc-300 group-hover:text-zinc-200">
                       {b.body}
                     </p>
                   </div>

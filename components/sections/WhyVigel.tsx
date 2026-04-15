@@ -40,9 +40,9 @@ export function WhyVigel() {
   });
 
   return (
-    <section id="why-vigel" className="bg-zinc-950 py-24 sm:py-32 overflow-hidden relative">
+    <section id="why-vigel" className="section-dark py-24 sm:py-32 overflow-hidden relative">
       {/* Subtle Background Radial Glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.05),transparent_70%)] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(16,185,129,0.08),transparent_70%)] pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
         <div className="grid gap-20 lg:grid-cols-12">
@@ -68,7 +68,7 @@ export function WhyVigel() {
           {/* Right Side Timeline */}
           <div className="relative lg:col-span-7" ref={containerRef}>
             {/* Static Background Rail */}
-            <div className="absolute left-6 top-2 h-full w-[2px] bg-white/5 lg:left-8" />
+            <div className="absolute left-6 top-2 h-full w-[2px] bg-white/15 lg:left-8" />
 
             {/* Animated Emerald Progress Line */}
             <motion.div
@@ -83,7 +83,7 @@ export function WhyVigel() {
                   {/* Timeline Node */}
                   <div className="absolute left-[18px] top-1 z-10 flex h-[14px] w-[14px] items-center justify-center lg:left-[26px]">
                     <motion.div
-                      className="h-full w-full rounded-full border-2 border-zinc-950 bg-zinc-800 shadow-sm transition-colors duration-500"
+                      className="h-full w-full rounded-full border-2 border-black bg-zinc-700 shadow-sm transition-colors duration-500"
                       whileInView={{ backgroundColor: "#10b981", borderColor: "#064e3b", scale: 1.2 }}
                       viewport={{ once: true, amount: 0.8 }}
                       transition={{ duration: 0.4, delay: index * 0.1 }}
@@ -91,7 +91,7 @@ export function WhyVigel() {
                   </div>
 
                   <div className="group relative">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-600 group-hover:text-emerald-500/50 transition-colors">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-500 group-hover:text-emerald-400/80 transition-colors">
                       Phase 0{index + 1}
                     </span>
 

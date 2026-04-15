@@ -24,7 +24,8 @@ export function AnimatedNavbar() {
   const [condensed, setCondensed] = useState(false);
   const { user } = useAuth();
 
-  const isLightPage = ["/contact", "/login", "/signup", "/register"].includes(pathname);
+  // Now almost all pages are light
+  const isLightPage = !["/dashboard"].includes(pathname); 
 
   useMotionValueEvent(scrollY, "change", (y) => {
     setCondensed(y > 20);
@@ -38,7 +39,7 @@ export function AnimatedNavbar() {
         condensed
           ? isLightPage
             ? "border-zinc-200/50 bg-white/80 backdrop-blur-2xl shadow-sm"
-            : "border-white/10 bg-gradient-to-b from-black/70 via-black/60 to-black/50 backdrop-blur-2xl shadow-lg"
+            : "border-white/10 bg-gradient-to-b from-zinc-900/70 via-zinc-900/60 to-zinc-900/50 backdrop-blur-2xl shadow-lg"
           : "border-transparent bg-transparent",
       )}
     >

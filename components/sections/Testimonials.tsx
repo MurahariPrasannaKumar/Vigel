@@ -206,7 +206,6 @@
 "use client";
 
 import React from "react";
-import { cn } from "@/lib/cn";
 
 const testimonials = [
   {
@@ -244,8 +243,8 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ item }: { item: (typeof testimonials)[0] }) => (
-  <div className="group relative flex flex-col rounded-3xl border border-white/10 bg-zinc-900/40 p-8 backdrop-blur-md transition-all duration-500 hover:border-emerald-500/30 hover:bg-zinc-900/60">
-    <div className="mb-6 font-serif text-6xl leading-none text-emerald-500/20 transition-colors group-hover:text-emerald-400/30">
+  <div className="group relative flex flex-col rounded-3xl border border-white/10 bg-zinc-900/40 p-8 transition-all duration-500 hover:border-emerald-500/30 hover:bg-zinc-900/60">
+    <div className="mb-6 font-serif text-6xl leading-none text-emerald-500/20 transition-colors group-hover:text-emerald-500/30">
       &ldquo;
     </div>
 
@@ -278,7 +277,7 @@ export function Testimonials() {
   const duplicatedTestimonials = [...testimonials, ...testimonials, ...testimonials];
 
   return (
-    <section className="relative overflow-hidden bg-zinc-950 py-24 lg:py-32">
+    <section className="section-dark relative overflow-hidden py-24 lg:py-32">
       {/* Background Ambient Glow */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
         <div className="h-[600px] w-[600px] rounded-full bg-emerald-500/5 blur-[120px]" />
@@ -344,27 +343,6 @@ export function Testimonials() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes v-scroll {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(-50%); }
-        }
-        @keyframes v-scroll-reverse {
-          0% { transform: translateY(-50%); }
-          100% { transform: translateY(0); }
-        }
-        .animate-v-scroll {
-          animation: v-scroll 50s linear infinite;
-        }
-        .animate-v-scroll-reverse {
-          animation: v-scroll-reverse 55s linear infinite;
-        }
-        .animate-v-scroll:hover, 
-        .animate-v-scroll-reverse:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 }

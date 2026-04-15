@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { TrustStrip } from "@/components/sections/TrustStrip";
 
 export const metadata: Metadata = {
   title: "About",
@@ -37,7 +38,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="border-t border-zinc-200 bg-zinc-50 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="section-dark border-t border-white/10 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
           <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
             <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900">
@@ -54,16 +55,29 @@ export default function AboutPage() {
               real-world conditions, including ambient-light scenarios.
             </p>
           </div>
-          <div className="flex flex-col justify-center rounded-2xl border border-blue-100 bg-gradient-to-br from-blue-50 to-white p-8 shadow-sm">
-            <blockquote className="font-[family-name:var(--font-syne)] text-xl font-medium leading-snug text-zinc-900">
+          <div className="flex flex-col justify-center rounded-2xl border border-white/10 bg-black p-8 shadow-sm">
+            <blockquote className="font-[family-name:var(--font-syne)] text-xl font-medium leading-snug text-white">
               &ldquo;We build renewable energy solutions that are efficient, adaptable, and
               ready for the next generation of infrastructure.&rdquo;
             </blockquote>
-            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+            <p className="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-emerald-400">
               VIGEL technology statement
             </p>
           </div>
         </div>
+      </section>
+
+      {/* Clients Carousel Section */}
+      <section className="section-light border-t border-zinc-200">
+        <div className="mx-auto max-w-6xl px-4 pt-16 pb-4 sm:px-6 lg:px-8 text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-zinc-400 mb-2">
+            Our Products &amp; Partners
+          </p>
+          <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900">
+            Trusted across the portfolio
+          </h2>
+        </div>
+        <TrustStrip />
       </section>
     </main>
   );

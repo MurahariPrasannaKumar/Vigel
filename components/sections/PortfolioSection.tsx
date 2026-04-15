@@ -160,9 +160,8 @@ const projects = [
 
 export function PortfolioSection() {
   return (
-    <section className="relative overflow-hidden bg-zinc-950 py-24 sm:py-32">
-      {/* Premium Background Pattern */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+    <section className="section-dark relative overflow-hidden py-24 sm:py-32">
+      {/* Top Accent */}
       <div className="absolute top-0 left-1/2 -z-10 h-px w-full -translate-x-1/2 bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -170,16 +169,16 @@ export function PortfolioSection() {
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 mb-4">
               <Monitor className="h-4 w-4 text-emerald-500" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400">Deployments</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-600">Deployments</span>
             </div>
             <h2 className="font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-white lg:text-7xl">
-              Project <span className="text-zinc-600">snapshots.</span>
+              Project <span className="text-zinc-500">snapshots.</span>
             </h2>
           </div>
 
           <Link
             href="/portfolio"
-            className="group inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-emerald-500 hover:text-black"
+            className="group inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/5 px-6 py-3 text-xs font-bold uppercase tracking-widest text-white transition-all hover:border-emerald-500 hover:bg-emerald-500 hover:text-zinc-950"
           >
             View all sites
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -198,17 +197,17 @@ export function PortfolioSection() {
             >
               {/* Image Layer: Black & White to Color */}
               <div
-                className="absolute inset-0 bg-cover bg-center grayscale opacity-40 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
+                className="absolute inset-0 bg-cover bg-center grayscale opacity-55 transition-all duration-1000 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-110"
                 style={{ backgroundImage: `url('${project.img}')` }}
               />
 
               {/* Glass Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-transparent opacity-90 transition-opacity group-hover:opacity-60" />
+              <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-zinc-900/10 opacity-95 transition-opacity group-hover:opacity-72" />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-emerald-500/20" />
 
               <div className="absolute inset-0 flex flex-col justify-between p-10">
                 <div className="flex items-center justify-between">
-                  <span className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-400 backdrop-blur-md">
+                  <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
                     {project.category}
                   </span>
                   <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-black/20 text-white opacity-0 transition-all duration-500 group-hover:opacity-100 group-hover:rotate-45">
@@ -218,15 +217,15 @@ export function PortfolioSection() {
 
                 <div className="flex items-end justify-between gap-4">
                   <div className="max-w-[70%]">
-                    <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium leading-tight text-white lg:text-3xl">
+                    <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] lg:text-3xl">
                       {project.title}
                     </h3>
                   </div>
                   <div className="text-right">
-                    <p className="font-[family-name:var(--font-syne)] text-4xl font-bold tracking-tighter text-emerald-400 lg:text-5xl">
+                    <p className="font-[family-name:var(--font-syne)] text-4xl font-bold tracking-tighter text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] lg:text-5xl">
                       {project.metric}
                     </p>
-                    <p className="mt-1 text-[9px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">
                       System Status
                     </p>
                   </div>
@@ -237,13 +236,15 @@ export function PortfolioSection() {
         </div>
 
         {/* Bottom Context Info */}
-        <div className="mt-12 flex flex-wrap items-center justify-center gap-8 border-t border-white/5 pt-12">
+        <div className="mt-12 border-t border-white/10 pt-12">
+          <div className="mx-auto flex w-fit flex-wrap items-center justify-center gap-8 rounded-full border border-white/15 bg-white/5 px-6 py-3 backdrop-blur-sm">
           {['24/7 Monitoring', 'Kurnool Hub', 'BIPV Certified', 'Smart Scaling'].map((tag) => (
             <div key={tag} className="flex items-center gap-2">
               <div className="h-1 w-1 rounded-full bg-emerald-500" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600">{tag}</span>
+              <span className="text-xs font-bold uppercase tracking-widest text-zinc-200">{tag}</span>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </section>

@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 
 export function ContactStrip() {
   return (
-    <section className="bg-white py-12 border-t border-zinc-200">
+    <section className="section-light py-12 border-t border-zinc-200">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-x-12">
 

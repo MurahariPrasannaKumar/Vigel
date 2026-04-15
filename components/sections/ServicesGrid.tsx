@@ -418,13 +418,13 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
   }, [center, spreadPerCard]);
 
   return (
-    <div id="services" className="services-container relative scroll-mt-24 bg-zinc-950">
+    <div id="services" className="services-container section-light relative scroll-mt-24">
       <section
         ref={sectionRef}
-        className="relative w-full bg-zinc-950"
+        className="relative w-full bg-white"
         style={{ height: `${sectionHeightVh}vh` }}
       >
-        <div className="sticky top-0 h-screen overflow-hidden bg-zinc-950">
+        <div className="sticky top-0 h-screen overflow-hidden bg-white">
 
           {/* Subtle Background Radial Glow */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.08),transparent_50%)]" />
@@ -436,14 +436,14 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                 <span className="mb-4 block text-[13px] font-bold uppercase tracking-[0.3em] text-emerald-500">
                   We Have Your Solar Needs Covered
                 </span>
-                <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium leading-[1.1] text-white lg:text-[64px] tracking-tight">
+                <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium leading-[1.1] text-zinc-950 lg:text-[64px] tracking-tight">
                   Renewable Solutions for <br />
                   <span className="text-zinc-500 italic">Infrastructure.</span>
                 </h2>
               </div>
               <a
                 href="/contact"
-                className="group pointer-events-auto mt-8 flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-bold text-black transition-all hover:bg-emerald-400 lg:mt-0"
+                className="group pointer-events-auto mt-8 flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-4 text-sm font-bold text-white transition-all hover:bg-emerald-500 hover:text-zinc-950 lg:mt-0"
               >
                 Contact VIGEL Team
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -465,7 +465,7 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
               >
                 <div
                   className={cn(
-                    "group pointer-events-auto absolute left-1/2 -translate-x-1/2 cursor-pointer overflow-hidden rounded-[24px] border border-white/10 bg-zinc-900 shadow-2xl transition-all duration-300 hover:border-emerald-500/50 hover:-translate-y-4",
+                    "group pointer-events-auto absolute left-1/2 -translate-x-1/2 cursor-pointer overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_20px_45px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-emerald-500/50 hover:-translate-y-4",
                     services.length >= 7
                       ? "top-[26%] h-[255px] w-[190px] lg:h-[320px] lg:w-[240px]"
                       : "top-[30%] h-[280px] w-[210px] lg:h-[340px] lg:w-[260px]",
@@ -476,7 +476,7 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                     <img
                       src={service.img}
                       alt={service.title}
-                      className="h-full w-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105"
+                      className="h-full w-full object-cover opacity-80 grayscale transition-all duration-700 group-hover:opacity-100 group-hover:grayscale-0 group-hover:scale-105"
                     />
 
                     {/* Dark gradient for text readability */}
@@ -495,14 +495,14 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
         </div>
       </section>
 
-      {/* Detail Modal (Dark Version) */}
+      {/* Detail Modal */}
       {selectedService && (
         <div
-          className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 p-4 backdrop-blur-md"
+          className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/55 p-4 backdrop-blur-md"
           onClick={() => setSelectedService(null)}
         >
           <div
-            className="w-full max-w-xl overflow-hidden rounded-[32px] border border-white/10 bg-zinc-900 shadow-2xl"
+            className="w-full max-w-xl overflow-hidden rounded-[32px] border border-zinc-200 bg-white shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="relative h-64">
@@ -511,23 +511,23 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                 alt={selectedService.title}
                 className="h-full w-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 to-transparent" />
               <button
                 onClick={() => setSelectedService(null)}
-                className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full bg-black/50 text-white backdrop-blur-xl border border-white/10 hover:bg-emerald-500 hover:text-black transition-colors"
+                className="absolute right-6 top-6 flex h-10 w-10 items-center justify-center rounded-full border border-zinc-200 bg-white/90 text-zinc-700 backdrop-blur-xl transition-colors hover:bg-emerald-500 hover:text-white"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
             <div className="p-8">
-              <h3 className="text-3xl font-medium text-white font-[family-name:var(--font-syne)]">{selectedService.title}</h3>
-              <p className="mt-4 text-zinc-400 leading-relaxed">{selectedService.details}</p>
+              <h3 className="text-3xl font-medium text-zinc-950 font-[family-name:var(--font-syne)]">{selectedService.title}</h3>
+              <p className="mt-4 text-zinc-600 leading-relaxed">{selectedService.details}</p>
 
               <div className="mt-8">
                 <h4 className="text-[10px] font-bold uppercase tracking-widest text-emerald-400 mb-4">Capabilities</h4>
                 <ul className="space-y-3">
                   {selectedService.highlights.map((point) => (
-                    <li key={point} className="flex items-start gap-3 text-sm text-zinc-300">
+                    <li key={point} className="flex items-start gap-3 text-sm text-zinc-700">
                       <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-emerald-500" />
                       <span>{point}</span>
                     </li>
@@ -535,9 +535,9 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                 </ul>
               </div>
 
-              <div className="mt-8 rounded-2xl border border-white/5 bg-white/5 p-5">
-                <p className="text-xs text-zinc-400 leading-relaxed">
-                  <span className="font-bold text-emerald-400 uppercase tracking-tighter mr-2">Status:</span>
+              <div className="mt-8 rounded-2xl border border-zinc-200 bg-zinc-50 p-5">
+                <p className="text-xs text-zinc-600 leading-relaxed">
+                  <span className="font-bold text-emerald-600 uppercase tracking-tighter mr-2">Status:</span>
                   {selectedService.availability}
                 </p>
               </div>

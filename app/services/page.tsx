@@ -72,7 +72,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="space-y-16 bg-zinc-50 px-4 py-20 sm:px-6 lg:px-8">
+      <section className="section-light space-y-16 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl space-y-16">
           {blocks.map((b) => (
             <article

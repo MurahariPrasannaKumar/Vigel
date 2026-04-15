@@ -64,7 +64,7 @@ export function ContactForm() {
     "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-2 focus:ring-black/5 transition";
 
   return (
-    <section className="bg-white px-6 py-20">
+    <section className="section-light px-6 py-20">
       <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

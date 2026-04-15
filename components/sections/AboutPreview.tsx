@@ -1,187 +1,160 @@
-// "use client";
-
-// import { ArrowRight } from "lucide-react";
-// import Link from "next/link";
-
-// export function AboutPreview() {
-//   return (
-//     <section className="relative overflow-hidden bg-transparent py-24 sm:py-32">
-//       <div className="absolute inset-0 -z-10 bg-zinc-950/50" />
-//       <div className="pointer-events-none absolute -inset-y-1/2 -z-10 right-0 w-1/2 bg-gradient-to-l from-emerald-500/10 to-transparent opacity-50 blur-3xl" />
-
-//       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-//         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
-//           <div>
-//             <div className="flex items-center gap-2">
-//               <span className="h-px w-8 bg-emerald-500" />
-//               <p className="text-xs font-semibold uppercase tracking-widest text-emerald-400">
-//                 The VIGEL Profile
-//               </p>
-//             </div>
-
-//             <h2 className="mt-8 font-[family-name:var(--font-syne)] text-4xl font-medium leading-tight tracking-tight text-white lg:text-5xl">
-//               Renewable energy innovation from Kurnool to scalable deployment.
-//             </h2>
-
-//             <p className="mt-6 text-lg leading-relaxed text-zinc-400">
-//               VIGEL combines product development and project execution across
-//               photovoltaic modules, BIPV systems, flexible rollable modules, and smart
-//               shelter technologies with a long-term manufacturing vision.
-//             </p>
-
-//             <div className="mt-10">
-//               <Link
-//                 href="/about"
-//                 className="group inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-emerald-400"
-//               >
-//                 Read our profile
-//                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-//               </Link>
-//             </div>
-//           </div>
-
-//           <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-white/10 bg-zinc-900 p-2 shadow-2xl">
-//             <div className="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950 to-transparent" />
-//             <div className="group relative h-full w-full overflow-hidden rounded-xl bg-zinc-800">
-//               <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2672&auto=format&fit=crop')] bg-cover bg-center opacity-60 mix-blend-luminosity transition-transform duration-700 group-hover:scale-105" />
-
-//               <div className="absolute bottom-8 left-8 right-8 z-20">
-//                 <div className="flex items-center justify-between">
-//                   <div>
-//                     <p className="text-sm font-medium text-white">SOFTCELL / SOFTFORM</p>
-//                     <p className="mt-1 text-xs text-zinc-400">BIPV, flexible, and smart module roadmap</p>
-//                   </div>
-//                   <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 backdrop-blur-md">
-//                     <ArrowRight className="h-4 w-4 text-white" />
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
-import { ArrowRight, Globe2 } from "lucide-react";
+import { ArrowRight, Globe2, Sparkles, Box, CircleDot } from "lucide-react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 
 const PREVIEW_IMAGES = [
-  "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?q=80&w=2672&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1466611653911-95282ee39567?q=80&w=2670&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1497435334941-8c899ee9e8e2?q=80&w=2574&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1509391366360-fe5bb60c8e5c?q=80&w=2670&auto=format&fit=crop",
+  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&q=80&w=2600",
+  "https://images.unsplash.com/photo-1613665813446-82a78c468a1d?auto=format&fit=crop&q=80&w=2600",
+  "https://images.unsplash.com/photo-1521618755572-156ae0cdd74d?auto=format&fit=crop&q=80&w=2600",
 ];
 
-// Double the array for seamless infinite looping
-const SCROLL_IMAGES = [...PREVIEW_IMAGES, ...PREVIEW_IMAGES];
-
 export function AboutPreview() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % PREVIEW_IMAGES.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative overflow-hidden bg-zinc-950 py-24 sm:py-32">
-      {/* Background Polish */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_50%,rgba(16,185,129,0.08)_0%,transparent_100%)]" />
-      <div className="pointer-events-none absolute -top-24 right-0 -z-10 h-[600px] w-1/2 bg-emerald-500/5 blur-[120px]" />
-
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-white py-24 sm:py-32 lg:py-40">
+      <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2 lg:gap-24">
-
-          {/* Left Content Column */}
-          <div className="relative z-10">
-            <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/20 bg-emerald-500/5 px-3 py-1">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-              </span>
-              <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400/90">
+          {/* --- Left Content: Unchanged but Polished --- */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="relative z-10"
+          >
+            <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/10 bg-emerald-500/5 px-4 py-1.5 backdrop-blur-md">
+              <Sparkles className="h-3 w-3 text-emerald-600" />
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-600">
                 The VIGEL Profile
               </p>
             </div>
 
-            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-4xl font-medium leading-[1.1] tracking-tight text-white lg:text-6xl">
+            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-zinc-950 lg:text-7xl leading-[1.1]">
               Renewable innovation <br />
-              <span className="text-zinc-500">from Kurnool to the world.</span>
+              <span className="bg-gradient-to-b from-zinc-700 to-zinc-400 bg-clip-text text-transparent italic font-light">
+                from Kurnool to the world.
+              </span>
             </h2>
 
-            <p className="mt-8 max-w-lg text-lg leading-relaxed text-zinc-400/90">
-              VIGEL bridges the gap between high-tech product development and
-              large-scale project execution. We specialize in BIPV systems and
-              flexible smart modules engineered for the next generation of energy.
+            <p className="mt-8 max-w-lg text-lg leading-relaxed text-zinc-500 font-light">
+              VIGEL bridges the gap between high-tech product R&D and
+              large-scale project execution. We specialize in BIPV systems
+              engineered for the next generation of infrastructure.
             </p>
 
             <div className="mt-12 flex flex-wrap items-center gap-8">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-emerald-400"
+                className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-zinc-950 px-8 py-4 text-sm font-bold text-white transition-all hover:bg-emerald-600"
               >
                 Read our profile
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Link>
 
-              <div className="flex items-center gap-2 text-xs text-zinc-500">
-                <Globe2 className="h-4 w-4" />
-                <span className="font-mono tracking-tighter">15.8281° N, 78.0373° E</span>
+              <div className="flex flex-col gap-1 border-l border-zinc-200 pl-6">
+                <div className="flex items-center gap-2 text-[10px] font-bold text-zinc-400 tracking-widest uppercase">
+                  <Globe2 className="h-3 w-3" />
+                  Coordinates
+                </div>
+                <span className="text-xs font-medium text-zinc-900">
+                  15.8281° N, 78.0373° E
+                </span>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right Image Carousel Column */}
-          <div className="relative">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-zinc-900/50 p-3 shadow-2xl backdrop-blur-sm">
+          {/* --- Right Column: The Premium Vessel --- */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            {/* The Container (Ultra-Simple, High-Depth) */}
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] border border-zinc-200 bg-white p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]">
+              {/* Inner Frame */}
+              <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-zinc-50">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentIndex}
+                    initial={{ opacity: 0, filter: "blur(10px)" }}
+                    animate={{ opacity: 1, filter: "blur(0px)" }}
+                    exit={{ opacity: 0, filter: "blur(10px)" }}
+                    transition={{ duration: 0.8 }}
+                    className="absolute inset-0"
+                  >
+                    <img
+                      src={PREVIEW_IMAGES[currentIndex]}
+                      alt="Vigel Innovation"
+                      className="h-full w-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+                    />
+                    {/* Shadow masking for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
 
-              {/* Carousel Track */}
-              <div className="relative h-full w-full overflow-hidden rounded-2xl bg-zinc-950">
-                <motion.div
-                  className="flex h-full"
-                  animate={{ x: ["0%", "-50%"] }}
-                  transition={{
-                    duration: 20,
-                    ease: "linear",
-                    repeat: Infinity
-                  }}
-                >
-                  {SCROLL_IMAGES.map((src, index) => (
-                    <div
-                      key={index}
-                      className="relative h-full min-w-full flex-shrink-0"
-                    >
-                      <img
-                        src={src}
-                        alt="Vigel Innovation"
-                        className="h-full w-full object-cover opacity-60 mix-blend-luminosity transition-transform duration-700 hover:scale-110 hover:opacity-80 hover:mix-blend-normal"
-                      />
+                {/* --- Premium Technical Overlays --- */}
+
+                {/* 1. Floating Status Badge */}
+                <div className="absolute top-6 right-6 z-20">
+                  <div className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 backdrop-blur-md">
+                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="text-[10px] font-bold text-white uppercase tracking-widest">
+                      Live: Ops Kurnool
+                    </span>
+                  </div>
+                </div>
+
+                {/* 2. Simplified Information Overlay */}
+                <div className="absolute bottom-8 left-8 right-8 z-20">
+                  <div className="flex items-end justify-between">
+                    <div className="space-y-1">
+                      <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
+                        Ref: System-24
+                      </p>
+                      <h4 className="text-2xl font-medium text-white tracking-tight">
+                        SOFTCELL Structure
+                      </h4>
+                      <div className="flex gap-4 pt-2">
+                        <div className="h-1 w-12 bg-white/20 rounded-full overflow-hidden">
+                          <motion.div
+                            animate={{ width: ["0%", "100%"] }}
+                            transition={{
+                              duration: 2.5,
+                              repeat: Infinity,
+                              ease: "linear",
+                            }}
+                            className="h-full bg-emerald-500"
+                          />
+                        </div>
+                        <span className="text-[9px] text-zinc-300 font-mono">
+                          0{currentIndex + 1} // Deployment
+                        </span>
+                      </div>
                     </div>
-                  ))}
-                </motion.div>
 
-                {/* Overlays */}
-                <div className="absolute inset-0 pointer-events-none z-20 bg-gradient-to-t from-zinc-950 via-transparent to-zinc-950/20" />
-
-                {/* Floating Info Card */}
-                <div className="absolute bottom-6 left-6 right-6 z-30 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-xl">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Innovation Roadmap</p>
-                      <p className="mt-1 text-sm font-medium text-white">SOFTCELL / SOFTFORM</p>
-                      <p className="text-xs text-zinc-500">BIPV & Smart Module Deployment</p>
-                    </div>
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/10 text-white transition-colors hover:bg-emerald-500 hover:border-emerald-500">
-                      <ArrowRight className="h-5 w-5" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 text-white backdrop-blur-xl">
+                      <Box className="h-5 w-5" strokeWidth={1.5} />
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
 
-            {/* Aesthetic accent behind the card */}
-            <div className="absolute -bottom-12 -right-12 -z-10 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
-          </div>
-
+            {/* Background Glow (Minimal) */}
+            <div className="absolute -bottom-6 -right-6 -z-10 h-64 w-64 rounded-full bg-emerald-500/5 blur-[80px]" />
+          </motion.div>
         </div>
       </div>
     </section>

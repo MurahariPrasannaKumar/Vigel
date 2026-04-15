@@ -104,9 +104,7 @@ export function ProcessSection() {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className="relative overflow-hidden bg-zinc-950 py-24 lg:py-40">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,#18181b_1px,transparent_1px),linear-gradient(to_bottom,#18181b_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)]" />
-
+    <section ref={containerRef} className="section-dark relative overflow-hidden py-24 lg:py-40">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mb-24 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
@@ -117,17 +115,17 @@ export function ProcessSection() {
               </p>
             </div>
             <h2 className="font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-white lg:text-7xl">
-              Engineered <span className="text-zinc-600 font-light italic">Flow.</span>
+              Engineered <span className="text-zinc-500 font-light italic">Flow.</span>
             </h2>
           </div>
-          <button className="group inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-emerald-500 hover:text-black">
+          <button className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:border-emerald-600 hover:bg-emerald-600 hover:text-white">
             Full Roadmap <ArrowRight className="h-4 w-4" />
           </button>
         </div>
 
         <div className="relative">
           {/* Main Power Rail */}
-          <div className="absolute top-1/2 left-0 hidden h-[1px] w-full -translate-y-1/2 bg-zinc-900 lg:block">
+          <div className="absolute top-1/2 left-0 hidden h-[1px] w-full -translate-y-1/2 bg-zinc-100 lg:block">
             <div
               ref={pulseRef}
               className="absolute h-[2px] w-64 -translate-y-1/2 bg-gradient-to-r from-transparent via-emerald-500 to-transparent shadow-[0_0_25px_#10b981]"
@@ -147,17 +145,17 @@ export function ProcessSection() {
                 </div>
 
                 {/* Card Container with animated border */}
-                <div className="inner-card-container relative aspect-square overflow-hidden rounded-3xl border border-white/5 bg-zinc-950/50 p-8 backdrop-blur-xl transition-colors duration-500">
+                <div className="inner-card-container relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl transition-colors duration-500">
 
                   {/* Central Node Light */}
-                  <div className="node-light absolute left-1/2 top-1/2 hidden h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-zinc-800 lg:block" />
+                  <div className="node-light absolute left-1/2 top-1/2 hidden h-1.5 w-1.5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/20 lg:block" />
 
                   <div className="flex h-full flex-col justify-between relative z-10">
                     <div className="flex items-start justify-between">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-zinc-900 text-emerald-400 group-hover:border-emerald-500/50 transition-colors">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-black text-emerald-400 group-hover:border-emerald-500/50 transition-colors shadow-sm">
                         <step.icon size={22} strokeWidth={1.5} />
                       </div>
-                      <span className="font-mono text-[10px] font-bold text-zinc-600">
+                      <span className="font-mono text-[10px] font-bold text-zinc-500">
                         {step.id}
                       </span>
                     </div>
@@ -166,13 +164,13 @@ export function ProcessSection() {
                       <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium text-white lg:text-2xl">
                         {step.title}
                       </h3>
-                      <p className="mt-3 text-xs leading-relaxed text-zinc-500 group-hover:text-zinc-400 transition-colors">
+                      <p className="mt-3 text-xs leading-relaxed text-zinc-400 transition-colors">
                         {step.description}
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between border-t border-white/5 pt-4">
-                      <span className="text-[10px] font-mono tracking-tighter text-zinc-600 uppercase">{step.metadata}</span>
+                    <div className="flex items-center justify-between border-t border-white/10 pt-4">
+                      <span className="text-[10px] font-mono tracking-tighter text-zinc-500 uppercase">{step.metadata}</span>
                       <div className="flex gap-1">
                         <div className="h-1 w-3 rounded-full bg-emerald-500/20" />
                         <div className="h-1 w-1 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]" />
@@ -186,7 +184,7 @@ export function ProcessSection() {
         </div>
 
         {/* System Diagnostics Footer */}
-        <div className="mt-20 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 rounded-2xl border border-white/5 bg-zinc-900/40 px-10 py-6 backdrop-blur-md">
+        <div className="mt-20 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 rounded-2xl border border-white/10 bg-white/5 px-10 py-6 backdrop-blur-md">
           {["Pipeline Synchronized", "Latency: 0.02ms", "Kurnool Edge Node"].map((text, i) => (
             <div key={i} className="flex items-center gap-3">
               <div className="h-1 w-1 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]" />
