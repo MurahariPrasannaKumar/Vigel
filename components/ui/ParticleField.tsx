@@ -15,19 +15,34 @@ export function ParticleField({ className }: { className?: string }) {
 
     let raf = 0;
     let particles: Particle[] = [];
+    let width = 0;
+    let height = 0;
+    let dpr = 1;
+    let lastFrame = 0;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const targetFps = prefersReducedMotion ? 18 : 30;
+    const frameTime = 1000 / targetFps;
 
     const resize = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      canvas.width = Math.floor(w * dpr);
-      canvas.height = Math.floor(h * dpr);
-      ctx.scale(dpr, dpr);
+      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      width = canvas.clientWidth;
+      height = canvas.clientHeight;
+      canvas.width = Math.floor(width * dpr);
+      canvas.height = Math.floor(height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      const count = Math.min(80, Math.floor((w * h) / 18000));
+      const isSmallViewport = width < 768;
+      const hardwareFactor = navigator.hardwareConcurrency <= 4 ? 0.6 : 1;
+      const densityBase = isSmallViewport ? 26000 : 22000;
+      const count = Math.min(
+        54,
+        Math.max(16, Math.floor(((width * height) / densityBase) * hardwareFactor)),
+      );
       particles = Array.from({ length: count }, () => ({
-        x: Math.random() * w,
-        y: Math.random() * h,
+        x: Math.random() * width,
+        y: Math.random() * height,
         r: Math.random() * 1.4 + 0.3,
         vx: (Math.random() - 0.5) * 0.15,
         vy: (Math.random() - 0.5) * 0.15,
@@ -35,15 +50,24 @@ export function ParticleField({ className }: { className?: string }) {
       }));
     };
 
-    const draw = () => {
-      const w = canvas.clientWidth;
-      const h = canvas.clientHeight;
-      ctx.clearRect(0, 0, w, h);
+    const draw = (now: number) => {
+      if (document.visibilityState !== "visible") {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
+
+      if (now - lastFrame < frameTime) {
+        raf = requestAnimationFrame(draw);
+        return;
+      }
+      lastFrame = now;
+
+      ctx.clearRect(0, 0, width, height);
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
         ctx.beginPath();
         ctx.fillStyle = `rgba(34,197,94,${p.a})`;
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -53,7 +77,7 @@ export function ParticleField({ className }: { className?: string }) {
     };
 
     resize();
-    draw();
+    raf = requestAnimationFrame(draw);
     const ro = new ResizeObserver(resize);
     ro.observe(canvas);
     return () => {

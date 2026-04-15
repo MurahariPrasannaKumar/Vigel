@@ -1,19 +1,48 @@
-"use client";
-
+import dynamic from "next/dynamic";
 import { Hero3D } from "@/components/hero/Hero3D";
-
 import { ServicesOverview } from "@/components/sections/ServicesOverview";
 import { AboutPreview } from "@/components/sections/AboutPreview";
 import { BenefitsSection } from "@/components/sections/BenefitsSection";
-import { ServicesGrid } from "@/components/sections/ServicesGrid";
-import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { WhyVigel } from "@/components/sections/WhyVigel";
-import { AnimatedStats } from "@/components/sections/AnimatedStats";
-import { Testimonials } from "@/components/sections/Testimonials";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
-
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { Rss, Mail, Shield, Zap } from "lucide-react";
+
+const ServicesGrid = dynamic(
+  () =>
+    import("@/components/sections/ServicesGrid").then((mod) => mod.ServicesGrid),
+  {
+    loading: () => <div className="h-[28rem]" aria-hidden />,
+  },
+);
+
+const PortfolioSection = dynamic(
+  () =>
+    import("@/components/sections/PortfolioSection").then(
+      (mod) => mod.PortfolioSection,
+    ),
+  {
+    loading: () => <div className="h-[24rem]" aria-hidden />,
+  },
+);
+
+const AnimatedStats = dynamic(
+  () =>
+    import("@/components/sections/AnimatedStats").then(
+      (mod) => mod.AnimatedStats,
+    ),
+  {
+    loading: () => <div className="h-[24rem]" aria-hidden />,
+  },
+);
+
+const Testimonials = dynamic(
+  () =>
+    import("@/components/sections/Testimonials").then((mod) => mod.Testimonials),
+  {
+    loading: () => <div className="h-[18rem]" aria-hidden />,
+  },
+);
 
 export default function HomePage() {
   return (

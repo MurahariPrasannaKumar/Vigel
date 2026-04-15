@@ -5,14 +5,13 @@ import { usePathname } from "next/navigation";
 import Preloader from "@/components/ui/loader";
 
 export function LoaderProvider({ children }: { children: React.ReactNode }) {
-  const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+  const [loading, setLoading] = useState(pathname !== "/");
   const prevPathname = useRef(pathname);
 
   useEffect(() => {
-    // Detect page changes
     if (pathname !== prevPathname.current) {
-      setLoading(true);
+      setLoading(pathname !== "/");
       prevPathname.current = pathname;
     }
   }, [pathname]);

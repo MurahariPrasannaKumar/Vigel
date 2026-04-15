@@ -4,10 +4,13 @@ import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { useAuth } from "@/components/providers/AuthProvider";
-import { cn } from "@/lib/cn";
-import { transition } from "@/lib/motion";
+import { useEffect, useState } from "react";
+// Import your utilities
+// import { useAuth } from "@/components/providers/AuthProvider";
+// import { cn } from "@/lib/cn";
+
+// Fallback cn utility if needed
+const cn = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 const MotionLink = motion.create(Link);
 
@@ -21,104 +24,123 @@ const links = [
 export function AnimatedNavbar() {
   const pathname = usePathname();
   const { scrollY } = useScroll();
-  const [condensed, setCondensed] = useState(false);
-  const { user } = useAuth();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeHash, setActiveHash] = useState("");
 
-  // Now almost all pages are light
-  const isLightPage = !["/dashboard"].includes(pathname); 
+  // Placeholder user state - replace with your actual useAuth hook
+  const user = null;
 
-  useMotionValueEvent(scrollY, "change", (y) => {
-    setCondensed(y > 20);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    // Condense the navbar after a 50px scroll down the page
+    setIsScrolled(latest > 50);
   });
+
+  useEffect(() => {
+    const syncHash = () => {
+      setActiveHash(window.location.hash);
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+
+    return () => {
+      window.removeEventListener("hashchange", syncHash);
+    };
+  }, []);
 
   return (
     <motion.header
-      layout
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,backdrop-filter] duration-500 ease-out",
-        condensed
-          ? isLightPage
-            ? "border-zinc-200/50 bg-white/80 backdrop-blur-2xl shadow-sm"
-            : "border-white/10 bg-gradient-to-b from-zinc-900/70 via-zinc-900/60 to-zinc-900/50 backdrop-blur-2xl shadow-lg"
-          : "border-transparent bg-transparent",
-      )}
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 200, damping: 20 }}
+      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-6 pb-4 sm:px-6 pointer-events-none"
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
+      <motion.div
+        layout
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        className={cn(
+          "pointer-events-auto flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out",
+          isScrolled
+            ? "w-[90%] max-w-[700px] border-white/20 bg-black/60 px-4 py-2 shadow-xl backdrop-blur-md"
+            : "w-full max-w-[850px] border-white/10 bg-black/30 px-6 py-3 shadow-lg backdrop-blur-sm",
+        )}
+      >
+        {/* Updated Logo Section using public/logo.png */}
         <MotionLink
           href="/"
-          className="group flex items-center gap-3"
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.99 }}
-          transition={transition.spring}
+          className="group relative z-10 flex items-center pr-3"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          <div className="relative flex items-center">
+          {/* Container height dynamically scales down on scroll to match the tighter navbar */}
+          <div
+            className={cn(
+              "relative flex items-center transition-all duration-300",
+              isScrolled ? "h-12" : "h-12",
+            )}
+          >
             <Image
               src="/logo.png"
               alt="VIGEL Logo"
-              width={140}
-              height={40}
+              width={100} // Adjust width/height base numbers to match your image aspect ratio
+              height={496}
               priority
-              className={cn("object-contain transition-transform duration-300 group-hover:scale-105")}
+              className="h-40 w-auto object-contain object-left transition-transform duration-300 group-hover:scale-105"
             />
           </div>
         </MotionLink>
 
-        <nav className="hidden items-center gap-1 md:flex">
-          {links.map((l) => {
-            const active = l.href === "/" ? pathname === "/" : pathname === l.href;
+        {/* Navigation Links */}
+        <nav className="relative z-10 hidden items-center gap-1 md:flex">
+          {links.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/" && !activeHash
+                : link.href.startsWith("/#")
+                  ? pathname === "/" && activeHash === link.href.slice(1)
+                  : pathname === link.href;
+
             return (
-              <Link key={l.href} href={l.href}>
-                <motion.span
-                  className={cn(
-                    "relative block rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300",
-                    isLightPage
-                      ? active
-                        ? "text-zinc-900 font-semibold"
-                        : "text-zinc-600 hover:text-zinc-900"
-                      : active
-                        ? "text-white"
-                        : "text-white/80 hover:text-white",
-                  )}
-                  whileHover={{ y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={transition.spring}
-                >
-                  {active && (
-                    <motion.span
-                      layoutId="nav-pill"
-                      className={cn(
-                        "absolute inset-0 -z-10 rounded-full",
-                        isLightPage
-                          ? "bg-zinc-100 ring-1 ring-zinc-200"
-                          : "bg-white/10 ring-1 ring-white/20",
-                      )}
-                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                    />
-                  )}
-                  {l.label}
-                </motion.span>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-white",
+                  isActive ? "text-white" : "text-white/60",
+                )}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="navbar-active-indicator"
+                    className="absolute inset-0 -z-10 rounded-full bg-white/10 border border-white/20 shadow-sm"
+                    transition={{
+                      type: "spring",
+                      stiffness: 350,
+                      damping: 30,
+                    }}
+                  />
+                )}
+                <span className="relative z-10">{link.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-2 sm:gap-3">
+        {/* Action Button */}
+        <div className="relative z-10 flex items-center">
           <MotionLink
             href={user ? "/dashboard" : "/login"}
             className={cn(
-              "hidden rounded-full border px-4 py-2 text-sm font-medium backdrop-blur-md transition-colors sm:inline-flex",
-              isLightPage
-                ? "border-zinc-200 bg-white/80 text-zinc-900 hover:bg-zinc-100"
-                : "border-white/20 bg-white/10 text-white hover:bg-white/20",
+              "flex items-center justify-center rounded-full bg-white text-black font-medium transition-all duration-300 hover:bg-gray-200",
+              isScrolled ? "px-4 py-1.5 text-sm" : "px-6 py-2 text-sm",
             )}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            transition={transition.spring}
           >
-            {user ? "Dashboard" : "Sign in"}
+            {user ? "Dashboard" : "Sign In"}
           </MotionLink>
         </div>
-      </div>
+      </motion.div>
     </motion.header>
   );
 }
