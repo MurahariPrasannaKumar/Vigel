@@ -2,6 +2,7 @@
 
 import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
+import Image from "next/image";
 
 const heroImages = [
   "/hero-images/01.jpg",
@@ -43,11 +44,15 @@ export function HeroOrbitCarousel({
     if (!root || !stage || items.length === 0) return;
 
     const cardWidth = items[0].offsetWidth || 236;
-    const gap = window.innerWidth < 768 ? 16 : 24;
+    const gap = window.innerWidth < 768 ? 6 : 8;
     const step = cardWidth + gap;
 
     const halfItems = items.length / 2;
     const totalTrackWidth = halfItems * step;
+    const lineStartX = -window.innerWidth / 2 + cardWidth / 2;
+    const getLineX = (index: number) => lineStartX + index * step;
+    const getMarqueeX = (index: number) =>
+      lineStartX + index * step - totalTrackWidth;
     const finalLineYOffset = root.offsetHeight * 0.34;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -100,6 +105,7 @@ export function HeroOrbitCarousel({
             rotateY: angle * (180 / Math.PI),
             zIndex: itemZIndex,
             force3D: true,
+            transformOrigin: "50% 50%",
           });
         });
       };
@@ -139,7 +145,7 @@ export function HeroOrbitCarousel({
           rotateX: 0,
           rotateY: 0,
           zIndex: 30,
-          x: (index) => (index - halfItems) * step,
+          x: getLineX,
           force3D: true,
         });
 
@@ -149,13 +155,10 @@ export function HeroOrbitCarousel({
         }
 
         gsap.to(items, {
-          x: `-=${totalTrackWidth}`,
-          duration: 45,
+          x: getMarqueeX,
+          duration: 52,
           ease: "none",
           repeat: -1,
-          modifiers: {
-            x: gsap.utils.unitize((x) => parseFloat(x) % totalTrackWidth),
-          },
         });
 
         return;
@@ -189,7 +192,7 @@ export function HeroOrbitCarousel({
             rotateX: 0,
             rotateY: 0,
             zIndex: 30,
-            x: (index) => (index - halfItems) * step,
+            x: getLineX,
             duration: 2,
             ease: "expo.inOut", // Expo ease makes the "snap" into a line look incredibly smooth and deliberate
             stagger: 0.015, // A tiny micro-stagger makes the unwrap look like a smooth wave
@@ -204,13 +207,10 @@ export function HeroOrbitCarousel({
 
           // Phase 3: The infinite seamless marquee loop
           gsap.to(items, {
-            x: `-=${totalTrackWidth}`,
-            duration: 35,
+            x: getMarqueeX,
+            duration: 48,
             ease: "none",
             repeat: -1,
-            modifiers: {
-              x: gsap.utils.unitize((x) => parseFloat(x) % totalTrackWidth),
-            },
           });
 
         });
@@ -246,12 +246,13 @@ export function HeroOrbitCarousel({
             className="absolute left-1/2 top-1/2 contain-[layout_paint_style] will-change-transform"
           >
             <div className="relative h-[96px] w-[168px] overflow-hidden rounded-[14px] border border-white/10 bg-white/6 shadow-[0_20px_40px_rgba(0,0,0,0.6)] sm:h-[112px] sm:w-[196px] lg:h-[140px] lg:w-[240px]">
-              <img
+              <Image
                 src={src}
                 alt=""
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover"
+                fill
+                sizes="(min-width: 1024px) 240px, (min-width: 640px) 196px, 168px"
+                className="object-cover"
+                priority={index < 3}
               />
               <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.28),transparent_30%,transparent_68%,rgba(16,185,129,0.18))]" />
             </div>
