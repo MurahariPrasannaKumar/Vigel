@@ -57,7 +57,7 @@ export function Hero3D() {
   }, []);
 
   return (
-    <section className="relative isolate min-h-[100svh] overflow-hidden">
+    <section className="relative isolate min-h-[100svh] w-full max-w-full overflow-hidden">
       {/* <video
         autoPlay
         loop

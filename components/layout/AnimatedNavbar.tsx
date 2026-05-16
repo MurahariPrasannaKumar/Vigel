@@ -17,6 +17,7 @@ const MotionLink = motion.create(Link);
 const links = [
   { href: "/", label: "Home" },
   { href: "/#services", label: "Services" },
+  { href: "/divisions", label: "Our Divisions" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
@@ -27,8 +28,8 @@ export function AnimatedNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
 
-  // Placeholder user state - replace with your actual useAuth hook
-  const user = null;
+  const actionLink = "/contact";
+  const actionLabel = "Contact";
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     // Condense the navbar after a 50px scroll down the page
@@ -61,8 +62,8 @@ export function AnimatedNavbar() {
         className={cn(
           "pointer-events-auto flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out",
           isScrolled
-            ? "w-[90%] max-w-[700px] border-white/20 bg-black/60 px-4 py-2 shadow-xl backdrop-blur-md"
-            : "w-full max-w-[850px] border-white/10 bg-black/30 px-6 py-3 shadow-lg backdrop-blur-sm",
+            ? "w-[94%] max-w-[820px] border-white/20 bg-black/60 px-4 py-2 shadow-xl backdrop-blur-md"
+            : "w-full max-w-[980px] border-white/10 bg-black/30 px-6 py-3 shadow-lg backdrop-blur-sm",
         )}
       >
         {/* Updated Logo Section using public/logo.png */}
@@ -129,7 +130,7 @@ export function AnimatedNavbar() {
         {/* Action Button */}
         <div className="relative z-10 flex items-center">
           <MotionLink
-            href={user ? "/dashboard" : "/login"}
+            href={actionLink}
             className={cn(
               "flex items-center justify-center rounded-full bg-white text-black font-medium transition-all duration-300 hover:bg-gray-200",
               isScrolled ? "px-4 py-1.5 text-sm" : "px-6 py-2 text-sm",
@@ -137,7 +138,7 @@ export function AnimatedNavbar() {
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
           >
-            {user ? "Dashboard" : "Sign In"}
+            {actionLabel}
           </MotionLink>
         </div>
       </motion.div>

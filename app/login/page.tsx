@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Suspense } from "react";
-import { LoginForm } from "@/components/auth/AuthForms";
-import { SessionExpiredNotice } from "@/components/auth/SessionExpiredNotice";
+// import { Suspense } from "react";
+// import { LoginForm } from "@/components/auth/AuthForms";
+// import { SessionExpiredNotice } from "@/components/auth/SessionExpiredNotice";
 
 export const metadata: Metadata = {
   title: "Sign in | VIGEL",
@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function LoginPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 text-zinc-900">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 text-zinc-900">
+      {/*
       <div className="pointer-events-none absolute top-0 -translate-y-12 translate-x-1/4 opacity-50">
         <div className="h-[400px] w-[400px] rounded-full bg-zinc-200/70 blur-[80px]" />
       </div>
@@ -89,6 +90,23 @@ export default function LoginPage() {
               Back to website
             </Link>
           </div>
+        </div>
+      </div>
+      */}
+
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-10 shadow-2xl shadow-zinc-200/70 backdrop-blur-2xl">
+        <div className="space-y-6 text-center">
+          <p className="text-sm uppercase tracking-[0.24em] text-vigel-accent">Authentication disabled</p>
+          <h1 className="text-3xl font-semibold text-zinc-900">Sign-in is not available</h1>
+          <p className="text-sm leading-6 text-zinc-600">
+            The authentication flow has been disabled for now. Please continue using the public website.
+          </p>
+          <Link
+            href="/"
+            className="inline-flex rounded-full bg-vigel-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-vigel-green"
+          >
+            Return home
+          </Link>
         </div>
       </div>
     </main>

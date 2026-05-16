@@ -46,7 +46,7 @@ const Testimonials = dynamic(
 
 export default function HomePage() {
   return (
-    <main className="flex flex-1 flex-col bg-white selection:bg-emerald-500/30">
+    <main className="flex flex-1 flex-col overflow-x-clip bg-white selection:bg-emerald-500/30">
       {/* Hero Section */}
       <Hero3D />
 

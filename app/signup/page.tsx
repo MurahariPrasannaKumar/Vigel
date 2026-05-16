@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SignupForm } from "@/components/auth/AuthForms";
+// import { SignupForm } from "@/components/auth/AuthForms";
 
 export const metadata: Metadata = {
   title: "Create account | VIGEL",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
 
 export default function SignupPage() {
   return (
-    <main className="relative flex min-h-screen flex-1 flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 text-zinc-900">
+    <main className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-white px-4 py-24 text-zinc-900">
+      {/*
       <div className="pointer-events-none absolute top-[-80px] left-1/2 h-[400px] w-[400px] -translate-x-1/2 rounded-full bg-zinc-200/70 blur-[100px]" />
       <div className="pointer-events-none absolute bottom-[-120px] right-[-80px] h-[350px] w-[350px] rounded-full bg-emerald-100/70 blur-[100px]" />
 
@@ -46,6 +47,23 @@ export default function SignupPage() {
               </Link>
             </div>
           </div>
+        </div>
+      </div>
+      */}
+
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-10 shadow-[0_20px_60px_-15px_rgba(148,163,184,0.45)] backdrop-blur-2xl">
+        <div className="space-y-6 text-center">
+          <p className="text-sm uppercase tracking-[0.24em] text-vigel-accent">Registration disabled</p>
+          <h1 className="text-3xl font-semibold text-zinc-900">Account creation is not available</h1>
+          <p className="text-sm leading-6 text-zinc-600">
+            Sign-up has been disabled for now while authentication is hidden.
+          </p>
+          <Link
+            href="/"
+            className="inline-flex rounded-full bg-vigel-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-vigel-green"
+          >
+            Return home
+          </Link>
         </div>
       </div>
     </main>

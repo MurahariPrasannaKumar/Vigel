@@ -40,6 +40,10 @@ html.lenis body {
   height: auto;
 }
 
+html {
+  overflow-x: clip;
+}
+
 .lenis.lenis-smooth {
   scroll-behavior: auto !important;
 }
@@ -50,6 +54,7 @@ html.lenis body {
 
 body {
   @apply bg-white text-zinc-950 antialiased;
+  overflow-x: clip;
 }
 
 body.dark {

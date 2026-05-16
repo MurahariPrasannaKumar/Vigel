@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardGuard } from "@/components/dashboard/DashboardGuard";
+// import { DashboardGuard } from "@/components/dashboard/DashboardGuard";
 
 export const metadata: Metadata = {
   title: "Dashboard",
@@ -11,5 +11,8 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <DashboardGuard>{children}</DashboardGuard>;
+  return (
+    // <DashboardGuard>{children}</DashboardGuard>
+    <>{children}</>
+  );
 }
