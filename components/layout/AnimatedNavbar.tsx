@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -27,6 +28,7 @@ export function AnimatedNavbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeHash, setActiveHash] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const actionLink = "/contact";
   const actionLabel = "Contact";
@@ -129,6 +131,19 @@ export function AnimatedNavbar() {
 
         {/* Action Button */}
         <div className="relative z-10 flex items-center">
+          <button
+            type="button"
+            aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+            aria-expanded={isMenuOpen}
+            onClick={() => setIsMenuOpen((open) => !open)}
+            className="mr-2 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition-colors hover:bg-white/10 md:hidden"
+          >
+            {isMenuOpen ? (
+              <X className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            )}
+          </button>
           <MotionLink
             href={actionLink}
             className={cn(
@@ -142,6 +157,39 @@ export function AnimatedNavbar() {
           </MotionLink>
         </div>
       </motion.div>
+
+      {isMenuOpen && (
+        <motion.nav
+          initial={{ opacity: 0, y: -8, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -8, scale: 0.98 }}
+          transition={{ duration: 0.2 }}
+          className="pointer-events-auto absolute left-3 right-3 top-[5.25rem] overflow-hidden rounded-3xl border border-white/15 bg-black/85 p-2 shadow-2xl backdrop-blur-xl md:hidden"
+        >
+          {links.map((link) => {
+            const isActive =
+              link.href === "/"
+                ? pathname === "/" && !activeHash
+                : link.href.startsWith("/#")
+                  ? pathname === "/" && activeHash === link.href.slice(1)
+                  : pathname === link.href;
+
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className={cn(
+                  "flex items-center rounded-2xl px-4 py-3 text-sm font-semibold transition-colors",
+                  isActive ? "bg-white/10 text-white" : "text-white/70 hover:bg-white/5 hover:text-white",
+                )}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+        </motion.nav>
+      )}
     </motion.header>
   );
 }
