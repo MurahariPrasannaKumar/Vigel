@@ -19,7 +19,7 @@ const links = [
   { href: "/#services", label: "Services" },
   { href: "/divisions", label: "Our Divisions" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  // { href: "/contact", label: "Contact" },
 ];
 
 export function AnimatedNavbar() {
