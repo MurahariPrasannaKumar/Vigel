@@ -23,7 +23,7 @@ export default function AdminPage() {
       <LeadsTable />
       */}
       <div className="mx-auto max-w-4xl px-6 py-16 sm:px-8">
-        <h1 className="font-[family-name:var(--font-syne)] text-3xl font-semibold text-white">
+        <h1 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-white sm:text-3xl">
           Admin access disabled
         </h1>
         <p className="mt-4 max-w-2xl text-sm text-zinc-400">

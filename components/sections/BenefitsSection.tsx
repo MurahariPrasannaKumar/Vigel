@@ -188,7 +188,7 @@ export function BenefitsSection() {
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLElement>(".benefit-card");
 
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.fromTo(
           card,
           { opacity: 0, y: 100, scale: 0.9 },
@@ -213,10 +213,10 @@ export function BenefitsSection() {
   }, []);
 
   return (
-    <section ref={rootRef} className="section-dark relative w-full py-24 lg:py-40">
+    <section ref={rootRef} className="section-dark relative w-full overflow-hidden py-24 lg:py-40">
       {/* Premium Background Elements */}
-      <div className="absolute top-0 left-0 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
-      <div className="absolute bottom-0 right-0 h-[500px] w-[500px] translate-x-1/2 translate-y-1/2 rounded-full bg-emerald-500/10 blur-[120px]" />
+      <div className="absolute top-0 left-0 h-[320px] w-[320px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px] sm:h-[500px] sm:w-[500px] sm:blur-[120px]" />
+      <div className="absolute bottom-0 right-0 h-[320px] w-[320px] translate-x-1/2 translate-y-1/2 rounded-full bg-emerald-500/10 blur-[100px] sm:h-[500px] sm:w-[500px] sm:blur-[120px]" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-16 lg:grid-cols-12">
@@ -230,7 +230,7 @@ export function BenefitsSection() {
               </span>
             </div>
 
-            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-5xl font-medium leading-[1.1] tracking-tight text-white lg:text-7xl">
+            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-4xl font-medium leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-7xl">
               Future-proof <br />
               <span className="text-zinc-400">infrastructure.</span>
             </h2>
@@ -259,7 +259,7 @@ export function BenefitsSection() {
               <div
                 key={b.title}
                 className={cn(
-                  "benefit-card group relative overflow-hidden rounded-[2.5rem] border border-zinc-800 bg-zinc-900 p-8 lg:p-12 shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-colors hover:border-emerald-500/40 hover:bg-zinc-900",
+                  "benefit-card group relative overflow-hidden rounded-[2rem] border border-zinc-800 bg-zinc-900 p-6 shadow-[0_16px_40px_rgba(0,0,0,0.35)] transition-colors hover:border-emerald-500/40 hover:bg-zinc-900 sm:rounded-[2.5rem] sm:p-8 lg:p-12",
                   "before:absolute before:inset-0 before:-z-10 before:bg-gradient-to-b before:from-emerald-500/10 before:to-transparent before:opacity-0 before:transition-opacity hover:before:opacity-100"
                 )}
               >
@@ -274,7 +274,7 @@ export function BenefitsSection() {
                   </div>
 
                   <div className="flex-1">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                       <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium text-white lg:text-3xl">
                         {b.title}
                       </h3>

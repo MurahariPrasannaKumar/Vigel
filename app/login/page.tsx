@@ -94,10 +94,10 @@ export default function LoginPage() {
       </div>
       */}
 
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-10 shadow-2xl shadow-zinc-200/70 backdrop-blur-2xl">
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-2xl shadow-zinc-200/70 backdrop-blur-2xl sm:p-10">
         <div className="space-y-6 text-center">
           <p className="text-sm uppercase tracking-[0.24em] text-vigel-accent">Authentication disabled</p>
-          <h1 className="text-3xl font-semibold text-zinc-900">Sign-in is not available</h1>
+          <h1 className="text-2xl font-semibold text-zinc-900 sm:text-3xl">Sign-in is not available</h1>
           <p className="text-sm leading-6 text-zinc-600">
             The authentication flow has been disabled for now. Please continue using the public website.
           </p>

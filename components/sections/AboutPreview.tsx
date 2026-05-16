@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Globe2, Sparkles, Box, CircleDot } from "lucide-react";
+import { ArrowRight, Globe2, Sparkles, Box } from "lucide-react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
@@ -39,7 +39,7 @@ export function AboutPreview() {
               </p>
             </div>
 
-            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-zinc-950 lg:text-7xl leading-[1.1]">
+            <h2 className="mt-8 font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-zinc-950 sm:text-5xl lg:text-7xl leading-[1.1]">
               Renewable innovation <br />
               <span className="bg-gradient-to-b from-zinc-700 to-zinc-400 bg-clip-text text-transparent italic font-light">
                 from Kurnool to the world.
@@ -52,7 +52,7 @@ export function AboutPreview() {
               engineered for the next generation of infrastructure.
             </p>
 
-            <div className="mt-12 flex flex-wrap items-center gap-8">
+            <div className="mt-10 flex flex-wrap items-center gap-6 sm:mt-12 sm:gap-8">
               <Link
                 href="/about"
                 className="group relative inline-flex items-center gap-3 overflow-hidden rounded-full bg-zinc-950 px-8 py-4 text-sm font-bold text-white transition-all hover:bg-emerald-600"
@@ -81,7 +81,7 @@ export function AboutPreview() {
             className="relative"
           >
             {/* The Container (Ultra-Simple, High-Depth) */}
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] border border-zinc-200 bg-white p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)]">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2rem] border border-zinc-200 bg-white p-2 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] sm:rounded-[2.5rem]">
               {/* Inner Frame */}
               <div className="relative h-full w-full overflow-hidden rounded-[2rem] bg-zinc-50">
                 <AnimatePresence mode="wait">
@@ -106,7 +106,7 @@ export function AboutPreview() {
                 {/* --- Premium Technical Overlays --- */}
 
                 {/* 1. Floating Status Badge */}
-                <div className="absolute top-6 right-6 z-20">
+                <div className="absolute right-4 top-4 z-20 sm:right-6 sm:top-6">
                   <div className="flex items-center gap-2 rounded-full border border-white/20 bg-black/40 px-3 py-1.5 backdrop-blur-md">
                     <div className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-[10px] font-bold text-white uppercase tracking-widest">
@@ -116,13 +116,13 @@ export function AboutPreview() {
                 </div>
 
                 {/* 2. Simplified Information Overlay */}
-                <div className="absolute bottom-8 left-8 right-8 z-20">
-                  <div className="flex items-end justify-between">
+                <div className="absolute bottom-5 left-5 right-5 z-20 sm:bottom-8 sm:left-8 sm:right-8">
+                  <div className="flex items-end justify-between gap-4">
                     <div className="space-y-1">
                       <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-widest">
                         Ref: System-24
                       </p>
-                      <h4 className="text-2xl font-medium text-white tracking-tight">
+                      <h4 className="text-xl font-medium text-white tracking-tight sm:text-2xl">
                         SOFTCELL Structure
                       </h4>
                       <div className="flex gap-4 pt-2">
@@ -138,7 +138,7 @@ export function AboutPreview() {
                           />
                         </div>
                         <span className="text-[9px] text-zinc-300 font-mono">
-                          0{currentIndex + 1} // Deployment
+                          0{currentIndex + 1} / Deployment
                         </span>
                       </div>
                     </div>

@@ -51,10 +51,10 @@ export default function SignupPage() {
       </div>
       */}
 
-      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-10 shadow-[0_20px_60px_-15px_rgba(148,163,184,0.45)] backdrop-blur-2xl">
+      <div className="relative z-10 w-full max-w-md rounded-3xl border border-zinc-200 bg-white p-6 shadow-[0_20px_60px_-15px_rgba(148,163,184,0.45)] backdrop-blur-2xl sm:p-10">
         <div className="space-y-6 text-center">
           <p className="text-sm uppercase tracking-[0.24em] text-vigel-accent">Registration disabled</p>
-          <h1 className="text-3xl font-semibold text-zinc-900">Account creation is not available</h1>
+          <h1 className="text-2xl font-semibold text-zinc-900 sm:text-3xl">Account creation is not available</h1>
           <p className="text-sm leading-6 text-zinc-600">
             Sign-up has been disabled for now while authentication is hidden.
           </p>

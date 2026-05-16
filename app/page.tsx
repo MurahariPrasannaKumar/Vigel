@@ -146,7 +146,7 @@ export default function HomePage() {
               </p>
             </div>
 
-            <h2 className="mt-10 font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-zinc-900 lg:text-7xl leading-[1.05]">
+            <h2 className="mt-10 font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-zinc-900 sm:text-5xl lg:text-7xl leading-[1.05]">
               Product benchmarks <br />
               <span className="text-zinc-400">from the VIGEL profile.</span>
             </h2>

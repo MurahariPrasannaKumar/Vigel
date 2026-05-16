@@ -285,7 +285,7 @@ export function Testimonials() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
         {/* Header Section */}
-        <div className="mb-20 flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
+        <div className="mb-14 flex flex-col items-start justify-between gap-8 sm:mb-20 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <div className="mb-4 flex items-center gap-2">
               <span className="h-px w-8 bg-emerald-500" />
@@ -295,7 +295,7 @@ export function Testimonials() {
             </div>
             <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium leading-tight text-white lg:text-6xl">
               Deployment <br />
-              <span className="text-zinc-500 font-light italic text-5xl lg:text-7xl">Highlights.</span>
+              <span className="text-zinc-500 font-light italic text-4xl sm:text-5xl lg:text-7xl">Highlights.</span>
             </h2>
           </div>
 
@@ -308,8 +308,8 @@ export function Testimonials() {
         </div>
 
         {/* Vertical Scrolling Bento Box */}
-        <div className="relative mx-auto mt-12 overflow-hidden rounded-[3rem] border border-white/10 bg-zinc-900/20 backdrop-blur-xl shadow-2xl">
-          <div className="relative h-[600px] md:h-[750px] overflow-hidden px-6 lg:px-10">
+        <div className="relative mx-auto mt-12 overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-900/20 backdrop-blur-xl shadow-2xl sm:rounded-[3rem]">
+          <div className="relative h-[560px] overflow-hidden px-4 md:h-[750px] md:px-6 lg:px-10">
 
             {/* Fade Overlays for Smooth Scroll Transition */}
             <div className="absolute inset-x-0 top-0 z-30 h-32 pointer-events-none bg-gradient-to-b from-zinc-950 via-zinc-950/40 to-transparent" />

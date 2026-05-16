@@ -28,7 +28,7 @@ export default function DashboardPage() {
       */}
       <div className="mx-auto flex min-h-[60vh] max-w-4xl flex-col items-start justify-center gap-6 px-6 py-16 sm:px-8">
         <p className="text-sm uppercase tracking-[0.24em] text-vigel-accent">Dashboard disabled</p>
-        <h1 className="text-4xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
+        <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 sm:text-5xl">
           Authentication is currently turned off.
         </h1>
         <p className="max-w-2xl text-base leading-7 text-zinc-600">

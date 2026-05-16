@@ -78,7 +78,7 @@ export default function ServicesPage() {
             <article
               key={b.id}
               id={b.id}
-              className="grid gap-10 rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm lg:grid-cols-2 lg:p-10"
+              className="grid gap-8 rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8 lg:grid-cols-2 lg:gap-10 lg:p-10"
             >
               <div>
                 <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900 sm:text-3xl">

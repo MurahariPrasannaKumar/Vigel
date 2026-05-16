@@ -17,7 +17,7 @@ export default function DivisionsPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-vigel-accent">
             Our Divisions
           </p>
-          <h1 className="mt-4 max-w-5xl font-[family-name:var(--font-syne)] text-4xl font-semibold sm:text-6xl lg:text-7xl">
+          <h1 className="mt-4 max-w-5xl font-[family-name:var(--font-syne)] text-4xl font-semibold leading-tight sm:text-6xl sm:leading-tight lg:text-7xl">
             Dedicated teams shaping VIGEL&apos;s renewable energy portfolio.
           </h1>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-zinc-300 sm:text-lg">

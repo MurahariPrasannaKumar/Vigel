@@ -430,20 +430,20 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,rgba(16,185,129,0.08),transparent_50%)]" />
 
           {/* Header Content */}
-          <div className="pointer-events-none absolute left-0 top-0 z-20 w-full px-8 pt-24 lg:px-12">
+          <div className="pointer-events-none absolute left-0 top-0 z-20 w-full px-4 pt-20 sm:px-8 sm:pt-24 lg:px-12">
             <div className="mx-auto flex max-w-[1400px] flex-col items-start justify-between lg:flex-row lg:items-end">
               <div className="pointer-events-auto">
                 <span className="mb-4 block text-[13px] font-bold uppercase tracking-[0.3em] text-emerald-500">
                   We Have Your Solar Needs Covered
                 </span>
-                <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium leading-[1.1] text-zinc-950 lg:text-[64px] tracking-tight">
+                <h2 className="font-[family-name:var(--font-syne)] text-3xl font-medium leading-[1.1] text-zinc-950 sm:text-4xl lg:text-[64px] tracking-tight">
                   Renewable Solutions for <br />
                   <span className="text-zinc-500 italic">Infrastructure.</span>
                 </h2>
               </div>
               <a
                 href="/contact"
-                className="group pointer-events-auto mt-8 flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-4 text-sm font-bold text-white transition-all hover:bg-emerald-500 hover:text-zinc-950 lg:mt-0"
+                className="group pointer-events-auto mt-6 flex items-center gap-3 rounded-full bg-zinc-950 px-6 py-3 text-xs font-bold text-white transition-all hover:bg-emerald-500 hover:text-zinc-950 sm:mt-8 sm:px-8 sm:py-4 sm:text-sm lg:mt-0"
               >
                 Contact VIGEL Team
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -467,8 +467,8 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                   className={cn(
                     "group pointer-events-auto absolute left-1/2 -translate-x-1/2 cursor-pointer overflow-hidden rounded-[24px] border border-zinc-200 bg-white shadow-[0_20px_45px_rgba(0,0,0,0.12)] transition-all duration-300 hover:border-emerald-500/50 hover:-translate-y-4",
                     services.length >= 7
-                      ? "top-[26%] h-[255px] w-[190px] lg:h-[320px] lg:w-[240px]"
-                      : "top-[30%] h-[280px] w-[210px] lg:h-[340px] lg:w-[260px]",
+                      ? "top-[34%] h-[220px] w-[156px] sm:top-[30%] sm:h-[255px] sm:w-[190px] lg:top-[26%] lg:h-[320px] lg:w-[240px]"
+                      : "top-[34%] h-[230px] w-[164px] sm:top-[30%] sm:h-[280px] sm:w-[210px] lg:h-[340px] lg:w-[260px]",
                   )}
                   onClick={() => setSelectedService(service)}
                 >
@@ -502,10 +502,10 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
           onClick={() => setSelectedService(null)}
         >
           <div
-            className="w-full max-w-xl overflow-hidden rounded-[32px] border border-zinc-200 bg-white shadow-2xl"
+            className="max-h-[calc(100svh-2rem)] w-full max-w-xl overflow-y-auto rounded-[24px] border border-zinc-200 bg-white shadow-2xl sm:rounded-[32px]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="relative h-64">
+            <div className="relative h-52 sm:h-64">
               <img
                 src={selectedService.img}
                 alt={selectedService.title}
@@ -519,8 +519,8 @@ export const ServicesGrid = React.memo(function ServicesGrid() {
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="p-8">
-              <h3 className="text-3xl font-medium text-zinc-950 font-[family-name:var(--font-syne)]">{selectedService.title}</h3>
+            <div className="p-6 sm:p-8">
+              <h3 className="text-2xl font-medium text-zinc-950 font-[family-name:var(--font-syne)] sm:text-3xl">{selectedService.title}</h3>
               <p className="mt-4 text-zinc-600 leading-relaxed">{selectedService.details}</p>
 
               <div className="mt-8">

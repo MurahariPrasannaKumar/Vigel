@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { createPortal } from "react-dom";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -63,12 +62,7 @@ const services = [
 
 export function ServicesOverview() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
   const active = activeIndex === null ? null : services[activeIndex];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -81,7 +75,7 @@ export function ServicesOverview() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-[#fafafa] py-24 sm:py-32 lg:py-48">
+      <section className="relative overflow-hidden bg-[#fafafa] py-20 sm:py-32 lg:py-48">
         {/* --- Background Polish --- */}
         <div className="absolute top-0 left-0 h-full w-full bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(16,185,129,0.05),transparent)]" />
 
@@ -95,7 +89,7 @@ export function ServicesOverview() {
 
         <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8">
           {/* --- Header --- */}
-          <div className="mb-24 flex flex-col gap-10 lg:flex-row lg:items-end lg:justify-between">
+          <div className="mb-14 flex flex-col gap-10 sm:mb-20 lg:mb-24 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
@@ -112,7 +106,7 @@ export function ServicesOverview() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-zinc-950 sm:text-7xl leading-[1.05]"
+                className="font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-zinc-950 sm:text-6xl lg:text-7xl leading-[1.05]"
               >
                 Technology built for <br />
                 <span className="bg-gradient-to-r from-zinc-400 via-zinc-900 to-zinc-950 bg-clip-text text-transparent italic">
@@ -143,7 +137,7 @@ export function ServicesOverview() {
                 viewport={{ once: true }}
                 onClick={() => setActiveIndex(i)}
                 className={cn(
-                  "group relative flex flex-col justify-between overflow-hidden rounded-[3.5rem] border border-zinc-200/60 bg-white p-12 text-left transition-all duration-700",
+                  "group relative flex flex-col justify-between overflow-hidden rounded-[2rem] border border-zinc-200/60 bg-white p-7 text-left transition-all duration-700 sm:rounded-[3rem] sm:p-10 lg:rounded-[3.5rem] lg:p-12",
                   "hover:shadow-[0_80px_100px_-40px_rgba(0,0,0,0.12)] hover:-translate-y-3",
                   i === 1 && "md:translate-y-12",
                 )}
@@ -152,14 +146,14 @@ export function ServicesOverview() {
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-[radial-gradient(circle_at_top_right,rgba(16,185,129,0.05),transparent)]" />
 
                 <div>
-                  <div className="relative mb-12">
+                  <div className="relative mb-8 sm:mb-12">
                     <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-zinc-100 bg-zinc-50/50 text-zinc-950 shadow-sm transition-all duration-700 group-hover:rotate-[10deg] group-hover:bg-zinc-950 group-hover:text-white group-hover:shadow-xl">
                       <service.icon className="h-8 w-8" strokeWidth={1.2} />
                     </div>
                     <Hexagon className="absolute -bottom-2 -right-2 h-8 w-8 text-emerald-500/20 group-hover:text-emerald-500/40 transition-colors" />
                   </div>
 
-                  <h3 className="font-[family-name:var(--font-syne)] text-3xl font-medium tracking-tight text-zinc-950 leading-tight">
+                  <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium tracking-tight text-zinc-950 leading-tight sm:text-3xl">
                     {service.title}
                   </h3>
                   <p className="mt-6 text-base leading-relaxed text-zinc-500 font-light">
@@ -167,7 +161,7 @@ export function ServicesOverview() {
                   </p>
                 </div>
 
-                <div className="mt-20 flex items-center justify-between border-t border-zinc-50 pt-8">
+                <div className="mt-12 flex items-center justify-between border-t border-zinc-50 pt-6 sm:mt-20 sm:pt-8">
                   <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-600">
                     <span className="h-1 w-6 bg-emerald-600 transition-all group-hover:w-10" />
                     Details
@@ -187,8 +181,8 @@ export function ServicesOverview() {
 
       {/* --- Detail Portal --- */}
       <AnimatePresence>
-        {mounted && active && (
-          <div className="fixed inset-0 z-[2147483640] flex items-center justify-center p-6">
+        {active && (
+          <div className="fixed inset-0 z-[2147483640] flex items-center justify-center p-4 sm:p-6">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -201,17 +195,17 @@ export function ServicesOverview() {
               initial={{ opacity: 0, scale: 0.95, y: 40 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 40 }}
-              className="relative z-10 w-full max-w-3xl overflow-hidden rounded-[4rem] bg-white p-14 lg:p-20 shadow-2xl"
+              className="relative z-10 max-h-[calc(100svh-2rem)] w-full max-w-3xl overflow-y-auto rounded-[2rem] bg-white p-6 shadow-2xl sm:rounded-[3rem] sm:p-10 lg:rounded-[4rem] lg:p-20"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setActiveIndex(null)}
-                className="absolute right-10 top-10 flex h-14 w-14 items-center justify-center rounded-full border border-zinc-100 bg-zinc-50 text-zinc-400 transition-all hover:bg-zinc-950 hover:text-white"
+                className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full border border-zinc-100 bg-zinc-50 text-zinc-400 transition-all hover:bg-zinc-950 hover:text-white sm:right-8 sm:top-8 sm:h-14 sm:w-14 lg:right-10 lg:top-10"
               >
                 <X className="h-6 w-6" />
               </button>
 
-              <div className="mb-14 flex items-center gap-8">
+              <div className="mb-10 flex flex-col gap-5 pr-10 sm:mb-14 sm:flex-row sm:items-center sm:gap-8 sm:pr-0">
                 <div className="flex h-20 w-20 items-center justify-center rounded-[2rem] bg-zinc-950 text-white">
                   <active.icon className="h-10 w-10" />
                 </div>
@@ -219,13 +213,13 @@ export function ServicesOverview() {
                   <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-emerald-600 mb-2">
                     Technical Specification
                   </span>
-                  <h3 className="font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-zinc-950">
+                  <h3 className="font-[family-name:var(--font-syne)] text-3xl font-medium tracking-tight text-zinc-950 sm:text-5xl">
                     {active.title}
                   </h3>
                 </div>
               </div>
 
-              <p className="text-xl leading-relaxed text-zinc-600 font-light">
+              <p className="text-base leading-relaxed text-zinc-600 font-light sm:text-xl">
                 {active.details}
               </p>
 

@@ -122,7 +122,7 @@ const projects = [
     metric: "3.3 kW",
     category: "Residential",
     img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?q=80&w=2672&auto=format&fit=crop",
-    className: "md:col-span-2 md:row-span-2 h-[600px] md:h-full",
+    className: "md:col-span-2 md:row-span-2 h-[420px] sm:h-[520px] md:h-full",
   },
   {
     id: 2,
@@ -171,7 +171,7 @@ export function PortfolioSection() {
               <Monitor className="h-4 w-4 text-emerald-500" />
               <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-600">Deployments</span>
             </div>
-            <h2 className="font-[family-name:var(--font-syne)] text-5xl font-medium tracking-tight text-white lg:text-7xl">
+            <h2 className="font-[family-name:var(--font-syne)] text-4xl font-medium tracking-tight text-white sm:text-5xl lg:text-7xl">
               Project <span className="text-zinc-500">snapshots.</span>
             </h2>
           </div>
@@ -191,7 +191,7 @@ export function PortfolioSection() {
             <div
               key={project.id}
               className={cn(
-                "group relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-zinc-900/40 transition-all duration-500 hover:border-emerald-500/30",
+                "group relative overflow-hidden rounded-[2rem] border border-white/5 bg-zinc-900/40 transition-all duration-500 hover:border-emerald-500/30 sm:rounded-[2.5rem]",
                 project.className
               )}
             >
@@ -205,7 +205,7 @@ export function PortfolioSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-zinc-900/10 opacity-95 transition-opacity group-hover:opacity-72" />
               <div className="absolute inset-0 ring-1 ring-inset ring-white/10 group-hover:ring-emerald-500/20" />
 
-              <div className="absolute inset-0 flex flex-col justify-between p-10">
+              <div className="absolute inset-0 flex flex-col justify-between p-6 sm:p-10">
                 <div className="flex items-center justify-between">
                   <span className="rounded-full border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-emerald-300 backdrop-blur-md">
                     {project.category}
@@ -215,14 +215,14 @@ export function PortfolioSection() {
                   </div>
                 </div>
 
-                <div className="flex items-end justify-between gap-4">
-                  <div className="max-w-[70%]">
-                    <h3 className="font-[family-name:var(--font-syne)] text-2xl font-medium leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] lg:text-3xl">
+                <div className="flex items-end justify-between gap-3 sm:gap-4">
+                  <div className="max-w-[64%] sm:max-w-[70%]">
+                    <h3 className="font-[family-name:var(--font-syne)] text-xl font-medium leading-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)] sm:text-2xl lg:text-3xl">
                       {project.title}
                     </h3>
                   </div>
                   <div className="text-right">
-                    <p className="font-[family-name:var(--font-syne)] text-4xl font-bold tracking-tighter text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] lg:text-5xl">
+                    <p className="font-[family-name:var(--font-syne)] text-3xl font-bold tracking-tighter text-emerald-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)] sm:text-4xl lg:text-5xl">
                       {project.metric}
                     </p>
                     <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-100 drop-shadow-[0_1px_3px_rgba(0,0,0,0.65)]">

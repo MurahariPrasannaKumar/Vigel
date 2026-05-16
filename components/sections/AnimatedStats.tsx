@@ -95,12 +95,7 @@ const stats = [
 
 export const AnimatedStats = memo(function AnimatedStats() {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
-  const [mounted, setMounted] = useState(false);
   const active = activeIndex === null ? null : stats[activeIndex];
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (activeIndex === null) return;
@@ -160,8 +155,7 @@ export const AnimatedStats = memo(function AnimatedStats() {
         ))}
       </div>
 
-      {mounted &&
-        active &&
+      {active &&
         createPortal(
           <div
             className="fixed inset-0 z-[9500] flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm"

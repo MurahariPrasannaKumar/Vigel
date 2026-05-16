@@ -11,8 +11,12 @@ export function LoaderProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     if (pathname !== prevPathname.current) {
-      setLoading(pathname !== "/");
+      const nextLoading = pathname !== "/";
+      const frame = window.requestAnimationFrame(() => {
+        setLoading(nextLoading);
+      });
       prevPathname.current = pathname;
+      return () => window.cancelAnimationFrame(frame);
     }
   }, [pathname]);
 

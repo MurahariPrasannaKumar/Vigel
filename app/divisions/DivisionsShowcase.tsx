@@ -99,7 +99,7 @@ export function DivisionsShowcase() {
               <article
                 key={division.name}
                 className={[
-                  "group flex min-h-[460px] flex-col rounded-lg border bg-white p-6 shadow-sm transition-all duration-300",
+                  "group flex min-h-[360px] flex-col rounded-lg border bg-white p-6 shadow-sm transition-all duration-300 sm:min-h-[460px]",
                   isSelected
                     ? "border-vigel-green shadow-xl shadow-emerald-950/10"
                     : "border-zinc-200 hover:-translate-y-1 hover:border-zinc-300 hover:shadow-lg",
@@ -118,7 +118,7 @@ export function DivisionsShowcase() {
                   />
                 </div>
 
-                <h3 className="font-[family-name:var(--font-syne)] text-2xl font-semibold leading-tight text-zinc-950">
+                <h3 className="font-[family-name:var(--font-syne)] text-xl font-semibold leading-tight text-zinc-950 sm:text-2xl">
                   {division.name}
                 </h3>
                 <p className="mt-4 text-sm leading-relaxed text-zinc-600">
@@ -168,7 +168,7 @@ export function DivisionsShowcase() {
 
         <div className="mt-10 overflow-hidden rounded-lg border border-zinc-200 bg-white shadow-xl shadow-zinc-900/5">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
-            <div className="relative min-h-[360px] overflow-hidden bg-zinc-950 sm:min-h-[480px]">
+            <div className="relative min-h-[320px] overflow-hidden bg-zinc-950 sm:min-h-[480px]">
               <Image
                 key={selectedDivision.images[0]}
                 src={selectedDivision.images[0]}
@@ -183,7 +183,7 @@ export function DivisionsShowcase() {
                 <p className="text-xs font-semibold uppercase tracking-[0.24em] text-vigel-accent">
                   Active Preview
                 </p>
-                <h3 className="mt-3 font-[family-name:var(--font-syne)] text-3xl font-semibold">
+                <h3 className="mt-3 font-[family-name:var(--font-syne)] text-2xl font-semibold sm:text-3xl">
                   {selectedDivision.name}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-200">
@@ -208,7 +208,7 @@ export function DivisionsShowcase() {
                 </p>
               </div>
 
-              <div className="mt-8 grid grid-cols-3 gap-3">
+              <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
                 {selectedDivision.images.map((image, index) => (
                   <div
                     key={image}

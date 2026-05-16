@@ -64,14 +64,14 @@ export function ContactForm() {
     "w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 outline-none focus:border-black focus:ring-2 focus:ring-black/5 transition";
 
   return (
-    <section className="section-light px-6 py-20">
+    <section className="section-light px-4 py-20 sm:px-6">
       <div className="mx-auto grid max-w-7xl items-start gap-12 lg:grid-cols-2">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm"
+          className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8"
         >
-          <h2 className="text-3xl font-semibold text-gray-900">Contact VI Green Energy Limited</h2>
+          <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl">Contact VI Green Energy Limited</h2>
           <p className="mt-2 text-sm text-gray-500">
             Share your project requirement for photovoltaic products, BIPV, or smart solar
             solutions. Our team will respond shortly.
@@ -119,7 +119,7 @@ export function ContactForm() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="h-[500px] overflow-hidden rounded-2xl border border-gray-200 shadow-sm"
+          className="h-[360px] overflow-hidden rounded-2xl border border-gray-200 shadow-sm sm:h-[500px]"
         >
           <iframe
             src="https://www.google.com/maps?q=Santosh%20Nagar%2C%20Kallur%2C%20Kurnool&output=embed"

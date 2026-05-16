@@ -40,7 +40,7 @@ export default function AboutPage() {
 
       <section className="section-dark border-t border-white/10 px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
-          <div className="rounded-2xl border border-zinc-200 bg-white p-8 shadow-sm">
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm sm:p-8">
             <h2 className="font-[family-name:var(--font-syne)] text-2xl font-semibold text-zinc-900">
               Company profile
             </h2>
@@ -55,7 +55,7 @@ export default function AboutPage() {
               real-world conditions, including ambient-light scenarios.
             </p>
           </div>
-          <div className="flex flex-col justify-center rounded-2xl border border-white/10 bg-black p-8 shadow-sm">
+          <div className="flex flex-col justify-center rounded-2xl border border-white/10 bg-black p-6 shadow-sm sm:p-8">
             <blockquote className="font-[family-name:var(--font-syne)] text-xl font-medium leading-snug text-white">
               &ldquo;We build renewable energy solutions that are efficient, adaptable, and
               ready for the next generation of infrastructure.&rdquo;

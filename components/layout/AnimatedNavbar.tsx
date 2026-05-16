@@ -54,16 +54,16 @@ export function AnimatedNavbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ type: "spring", stiffness: 200, damping: 20 }}
-      className="fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-6 pb-4 sm:px-6 pointer-events-none"
+      className="fixed inset-x-0 top-0 z-50 flex justify-center px-3 pb-4 pt-4 pointer-events-none sm:px-6 sm:pt-6"
     >
       <motion.div
         layout
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
         className={cn(
-          "pointer-events-auto flex items-center justify-between rounded-full border transition-all duration-300 ease-in-out",
+          "pointer-events-auto flex min-w-0 items-center justify-between rounded-full border transition-all duration-300 ease-in-out",
           isScrolled
-            ? "w-[94%] max-w-[820px] border-white/20 bg-black/60 px-4 py-2 shadow-xl backdrop-blur-md"
-            : "w-full max-w-[980px] border-white/10 bg-black/30 px-6 py-3 shadow-lg backdrop-blur-sm",
+            ? "w-full max-w-[820px] border-white/20 bg-black/60 px-3 py-2 shadow-xl backdrop-blur-md sm:w-[94%] sm:px-4"
+            : "w-full max-w-[980px] border-white/10 bg-black/30 px-4 py-2.5 shadow-lg backdrop-blur-sm sm:px-6 sm:py-3",
         )}
       >
         {/* Updated Logo Section using public/logo.png */}
@@ -77,7 +77,7 @@ export function AnimatedNavbar() {
           <div
             className={cn(
               "relative flex items-center transition-all duration-300",
-              isScrolled ? "h-12" : "h-12",
+              isScrolled ? "h-10 sm:h-12" : "h-10 sm:h-12",
             )}
           >
             <Image
@@ -86,7 +86,7 @@ export function AnimatedNavbar() {
               width={100} // Adjust width/height base numbers to match your image aspect ratio
               height={496}
               priority
-              className="h-40 w-auto object-contain object-left transition-transform duration-300 group-hover:scale-105"
+              className="h-32 w-auto object-contain object-left transition-transform duration-300 group-hover:scale-105 sm:h-40"
             />
           </div>
         </MotionLink>
@@ -106,7 +106,7 @@ export function AnimatedNavbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  "relative rounded-full px-4 py-1.5 text-sm font-medium transition-colors hover:text-white",
+                  "relative rounded-full px-3 py-1.5 text-sm font-medium transition-colors hover:text-white lg:px-4",
                   isActive ? "text-white" : "text-white/60",
                 )}
               >
@@ -133,7 +133,7 @@ export function AnimatedNavbar() {
             href={actionLink}
             className={cn(
               "flex items-center justify-center rounded-full bg-white text-black font-medium transition-all duration-300 hover:bg-gray-200",
-              isScrolled ? "px-4 py-1.5 text-sm" : "px-6 py-2 text-sm",
+              isScrolled ? "px-3 py-1.5 text-xs sm:px-4 sm:text-sm" : "px-4 py-2 text-xs sm:px-6 sm:text-sm",
             )}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
