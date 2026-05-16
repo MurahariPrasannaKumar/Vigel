@@ -30,9 +30,9 @@ const divisions: Division[] = [
     ],
     metric: "01",
     images: [
-      "/hero-images/01.jpg",
-      "/hero-images/02.jpg",
-      "/hero-images/03.jpg",
+      "/divisions-images/1.jpeg",
+      "/divisions-images/2.jpeg",
+      "/divisions-images/3.jpeg",
     ],
   },
   {
@@ -71,7 +71,14 @@ const divisions: Division[] = [
 
 export function DivisionsShowcase() {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const selectedDivision = divisions[selectedIndex];
+  const selectedImage = selectedDivision.images[selectedImageIndex] ?? selectedDivision.images[0];
+
+  const handleSelectDivision = (index: number) => {
+    setSelectedIndex(index);
+    setSelectedImageIndex(0);
+  };
 
   return (
     <section className="px-4 py-20 sm:px-6 lg:px-8">
@@ -147,7 +154,7 @@ export function DivisionsShowcase() {
 
                 <button
                   type="button"
-                  onClick={() => setSelectedIndex(index)}
+                  onClick={() => handleSelectDivision(index)}
                   className={[
                     "mt-auto flex w-full items-center justify-between rounded-md px-4 py-3 text-sm font-semibold transition-all",
                     isSelected
@@ -170,8 +177,8 @@ export function DivisionsShowcase() {
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="relative min-h-[320px] overflow-hidden bg-zinc-950 sm:min-h-[480px]">
               <Image
-                key={selectedDivision.images[0]}
-                src={selectedDivision.images[0]}
+                key={selectedImage}
+                src={selectedImage}
                 alt={`${selectedDivision.name} featured visual`}
                 fill
                 sizes="(min-width: 1024px) 60vw, 100vw"
@@ -210,9 +217,16 @@ export function DivisionsShowcase() {
 
               <div className="mt-8 grid grid-cols-3 gap-2 sm:gap-3">
                 {selectedDivision.images.map((image, index) => (
-                  <div
+                  <button
+                    type="button"
                     key={image}
-                    className="relative aspect-[4/3] overflow-hidden rounded-md border border-zinc-200 bg-zinc-100"
+                    onClick={() => setSelectedImageIndex(index)}
+                    className={[
+                      "relative aspect-[4/3] overflow-hidden rounded-md border bg-zinc-100 transition-all",
+                      selectedImageIndex === index
+                        ? "border-vigel-green ring-2 ring-vigel-green/30"
+                        : "border-zinc-200 hover:border-zinc-400",
+                    ].join(" ")}
                   >
                     <Image
                       src={image}
@@ -221,7 +235,7 @@ export function DivisionsShowcase() {
                       sizes="160px"
                       className="object-cover transition-transform duration-300 hover:scale-105"
                     />
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
