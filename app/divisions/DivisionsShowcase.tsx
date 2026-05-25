@@ -38,7 +38,7 @@ const divisions: Division[] = [
   {
     name: "Large Scale Solar Power Projects Division",
     summary:
-      "Placeholder content for the group working on BIPV, smart shelters, and site-fit renewable energy deployments.",
+      "We are under serious discussions with the government of Goa to establish a 100Mw Ground Mounted solar power projects in the state od Goa in india. A couple of rounds discussions already completed and awaited the government of goa to allocate the land required as well to sign a power purchase agreement (PPA) which are expecting to complete at the soonest. ",
     focus: [
       { label: "BIPV concepts" },
       { label: "Smart infrastructure" },
@@ -73,7 +73,8 @@ export function DivisionsShowcase() {
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const selectedDivision = divisions[selectedIndex];
-  const selectedImage = selectedDivision.images[selectedImageIndex] ?? selectedDivision.images[0];
+  const selectedImage =
+    selectedDivision.images[selectedImageIndex] ?? selectedDivision.images[0];
 
   const handleSelectDivision = (index: number) => {
     setSelectedIndex(index);
@@ -93,8 +94,9 @@ export function DivisionsShowcase() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-zinc-600">
-            Dummy imagery is connected to each card for now. Swap these files later with
-            final project photos, product shots, or division-specific media.
+            Dummy imagery is connected to each card for now. Swap these files
+            later with final project photos, product shots, or division-specific
+            media.
           </p>
         </div>
 
@@ -194,8 +196,8 @@ export function DivisionsShowcase() {
                   {selectedDivision.name}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-200">
-                  Related visual set for this division. Replace these placeholder
-                  images when your final assets are ready.
+                  Related visual set for this division. Replace these
+                  placeholder images when your final assets are ready.
                 </p>
               </div>
             </div>
@@ -209,9 +211,9 @@ export function DivisionsShowcase() {
                   {selectedDivision.images.length} related images
                 </h4>
                 <p className="mt-3 text-sm leading-relaxed text-zinc-600">
-                  These visuals are grouped by the selected division, giving the page a
-                  product-style interaction while your final content is still being
-                  prepared.
+                  These visuals are grouped by the selected division, giving the
+                  page a product-style interaction while your final content is
+                  still being prepared.
                 </p>
               </div>
 
