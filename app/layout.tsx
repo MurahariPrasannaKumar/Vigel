@@ -25,6 +25,9 @@ const syne = Syne({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.vigel.net"),
+  verification: {
+    google: "fIG2D-c6GtTo4q9d7gXhdYBzUSyUYeQhPHayilUfZpA",
+  },
   title: {
     default: "VIGEL - VI Green Energy Limited",
     template: "%s | VIGEL",
