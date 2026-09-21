@@ -14,6 +14,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Dashboard",
   robots: { index: false, follow: false },
+  alternates: { canonical: "https://vigel.vercel.app/dashboard" },
 };
 
 export default function DashboardPage() {
