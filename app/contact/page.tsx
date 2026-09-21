@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Contact VI Green Energy Limited for photovoltaic products, BIPV solutions, and renewable energy project enquiries.",
+  alternates: { canonical: "https://vigel.vercel.app/contact" },
 };
 
 export default function ContactPage() {
