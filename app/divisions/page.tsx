@@ -5,7 +5,6 @@ export const metadata: Metadata = {
   title: "Our Divisions",
   description:
     "Explore VIGEL divisions across solar manufacturing, integrated energy solutions, and future infrastructure programs.",
-  alternates: { canonical: "https://vigel.vercel.app/divisions" },
 };
 
 export default function DivisionsPage() {

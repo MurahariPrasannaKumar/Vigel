@@ -9,8 +9,8 @@ const footerLinks = {
     { href: "/dashboard", label: "Client Dashboard" },
   ],
   legal: [
-    
-    
+    { href: "/privacy", label: "Privacy Policy" },
+    { href: "/terms", label: "Terms of Service" },
   ],
   socials: [
     { name: "Twitter", href: "#", icon: Twitter },

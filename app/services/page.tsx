@@ -4,7 +4,6 @@ export const metadata: Metadata = {
   title: "Services",
   description:
     "Photovoltaic modules, BIPV, flexible rollable modules, and smart energy product solutions by VIGEL.",
-  alternates: { canonical: "https://vigel.vercel.app/services" },
 };
 
 const blocks = [

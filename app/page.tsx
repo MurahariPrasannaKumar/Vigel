@@ -8,8 +8,6 @@ import { FinalCTASection } from "@/components/sections/FinalCTASection";
 import { SectionReveal } from "@/components/ui/SectionReveal";
 import { Rss, Mail, Shield, Zap } from "lucide-react";
 
-
-export const metadata = { description: "Learn more about Home.", alternates: { canonical: "https://vigel.vercel.app/" } };
 const ServicesGrid = dynamic(
   () =>
     import("@/components/sections/ServicesGrid").then((mod) => mod.ServicesGrid),

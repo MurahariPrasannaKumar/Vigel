@@ -4,7 +4,6 @@ import { TrustStrip } from "@/components/sections/TrustStrip";
 export const metadata: Metadata = {
   title: "About",
   description: "Profile and technology direction of VIGEL - VI Green Energy Limited.",
-  alternates: { canonical: "https://vigel.vercel.app/about" },
 };
 
 export default function AboutPage() {
